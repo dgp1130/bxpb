@@ -20,9 +20,13 @@
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }
