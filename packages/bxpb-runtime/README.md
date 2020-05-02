@@ -63,8 +63,13 @@ Output files are stored in the `dist/` directory.
 
 Unit tests are run from the repository root:
 
-TODO: What if this has dependencies? How do we build them without building the universe?
-
 ```shell
 npm run lerna run test --scope packages/bxpb-runtime/
+```
+
+You should probably build and test in the same command:
+
+```shell
+npm run lerna run build --scope packages/bxpb-runtime/ --include-dependencies &&
+    npm run lerna run test --scope packages/bxpb-runtime/
 ```
