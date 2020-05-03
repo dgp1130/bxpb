@@ -28,6 +28,8 @@
     "url": "https://github.com/dgp1130/bxpb/issues"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.106",
+    "@types/google-protobuf": "^3.7.2",
     "@types/jasmine": "^3.5.10",
     "jasmine": "^3.5.0",
     "karma": "^5.0.4",

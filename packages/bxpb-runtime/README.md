@@ -65,14 +65,14 @@ Build and run unit tests with this command (run from the repository root):
 
 ```shell
 npm run -- lerna run build --scope bxpb-runtime --include-dependencies &&
-    npm run -- lerna run test --scope bxpb-runtime
+    npm run -- lerna run test --stream --scope bxpb-runtime
 ```
 
 You can debug tests by running:
 
 ```shell
 npm run -- lerna run build --scope bxpb-runtime --include-dependencies &&
-    npm run -- lerna run test:debug --scope bxpb-runtime
+    npm run -- lerna run test:debug --stream --scope bxpb-runtime
 ```
 
 This will start Karma on port 9876, open a browser to http://localhost:9876/debug.html to start
