@@ -7,6 +7,8 @@ project aims to enable developers to create client/service style code using Goog
 [Protocol Buffers](https://developers.google.com/protocol-buffers) IDL, much like a developer would
 create a tranditional web client. This enables easy communication between the different contexts.
 
+![Node.js CI](https://github.com/dgp1130/bxpb/workflows/Node.js%20CI/badge.svg?branch=master)
+
 ## Prototype
 
 A rough prototype exists in this
