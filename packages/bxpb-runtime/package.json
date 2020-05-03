@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "tsc -p tsconfig.spec.json && jasmine"
+    "test": "tsc -p tsconfig.spec.json && jasmine",
+    "test:debug": "karma start"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
@@ -29,6 +30,10 @@
   "devDependencies": {
     "@types/jasmine": "^3.5.10",
     "jasmine": "^3.5.0",
+    "karma": "^5.0.4",
+    "karma-jasmine": "^3.1.1",
+    "karma-jasmine-html-reporter": "^1.5.3",
+    "karma-typescript": "^5.0.2",
     "typescript": "^3.8.3"
   }
 }
