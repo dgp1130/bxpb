@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "tsc -p tsconfig.spec.json && jasmine",
+    "test": "karma start --browsers ChromeHeadless --singleRun",
     "test:debug": "karma start"
   },
   "bugs": {
@@ -31,8 +31,8 @@
     "@types/chrome": "^0.0.106",
     "@types/google-protobuf": "^3.7.2",
     "@types/jasmine": "^3.5.10",
-    "jasmine": "^3.5.0",
     "karma": "^5.0.4",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
     "karma-typescript": "^5.0.2",
