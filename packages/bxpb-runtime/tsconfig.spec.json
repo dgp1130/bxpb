@@ -3,6 +3,5 @@
     "compilerOptions": {
         "outDir": "test-out",
         "module": "CommonJS"
-    },
-    "include": ["src/**/*spec.ts"]
+    }
 }

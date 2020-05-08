@@ -20,9 +20,11 @@
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "karma start --browsers ChromeHeadless --singleRun",
-    "test:debug": "karma start"
+    "build": "tsc -p tsconfig.lib.json",
+    "build:test-data": "mkdir -p generated/test_data/ && grpc_tools_node_protoc --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:generated/test_data/ --ts_out=generated/test_data/ --proto_path src/test_data/ src/test_data/*.proto",
+    "build:test": "npm run -s build:test-data && tsc -p tsconfig.spec.json",
+    "test": "npm run -s build:test-data && karma start --browsers ChromeHeadless --singleRun",
+    "test:debug": "npm run -s build:test-data && karma start"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
@@ -31,11 +33,13 @@
     "@types/chrome": "^0.0.106",
     "@types/google-protobuf": "^3.7.2",
     "@types/jasmine": "^3.5.10",
+    "grpc-tools": "^1.8.1",
     "karma": "^5.0.4",
     "karma-chrome-launcher": "^3.1.0",
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.3",
     "karma-typescript": "^5.0.2",
+    "ts-protoc-gen": "^0.12.0",
     "typescript": "^3.8.3"
   },
   "dependencies": {
