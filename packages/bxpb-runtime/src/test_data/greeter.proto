@@ -13,3 +13,8 @@ message GreetResponse {
 service Greeter {
     rpc Greet(GreetRequest) returns (GreetResponse) { }
 }
+
+// An unrelated proto message to use for testing error cases.
+message UnrelatedMessage {
+    int64 number = 1;
+}
