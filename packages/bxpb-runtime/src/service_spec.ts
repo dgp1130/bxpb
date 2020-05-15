@@ -23,13 +23,7 @@ interface IGreeterService extends ServiceDescriptor<any> {
     };
 }
 
-/**
- * Example proto service. Serialize/deserialize functions don't actually do anything because they
- * would require a real {@link Message} subclass, which is not easy to stub thus requiring a real,
- * compiled, protobuf. Generating one would make the tests dependent on a pre-build step, which
- * would be tricky to integrate with Karma. So instead, these functions are typed correctly but not
- * actually implemented.
- */
+/** Example proto service. */
 const greeterService: Readonly<ServiceDescriptor<IGreeterService>> = Object.freeze({
     serviceNameFq: 'foo.bar.Greeter',
     methods: {
