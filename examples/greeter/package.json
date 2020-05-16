@@ -1,0 +1,16 @@
+{
+  "name": "greeter",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Hello world example using bxpb.",
+  "author": "Doug Parker <dgp1130@users.noreply.github.com>",
+  "homepage": "https://github.com/dgp1130/bxpb/tree/master/examples/greeter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgp1130/bxpb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dgp1130/bxpb/issues"
+  }
+}
