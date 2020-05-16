@@ -34,3 +34,10 @@ When you're done you can click "Remove" on the "Greeter" extension to uninstall 
 ## Use the extension
 
 Click on the "G" icon just right of the URL bar to show the extension popup and use it!
+
+## Debugging
+
+You can inspect element on the popup window and debug as you would any other web page. You can also
+click on the `background.html` link in the "Greeter" extension in
+[`chrome://extensions`](chrome://extensions) to inspect the background page. Sourcemaps should be
+enabled by default and allow for easy debugging.

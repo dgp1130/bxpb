@@ -7,9 +7,12 @@
   "homepage": "https://github.com/dgp1130/bxpb/tree/master/examples/greeter",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p dist/ && npm run -s build:manifest && npm run -s build:popup",
+    "build": "mkdir -p dist/ && npm run -s build:manifest && npm run -s build:popup && npm run -s build:background && npm run -s build:js",
     "build:manifest": "cp src/manifest.json dist/",
-    "build:popup": "cp src/popup.html dist/"
+    "build:popup": "cp src/popup.html dist/",
+    "build:background": "cp src/background.html dist/",
+    "build:js": "tsc",
+    "clean": "rm -rf dist/"
   },
   "repository": {
     "type": "git",
@@ -17,5 +20,11 @@
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
   }
 }
