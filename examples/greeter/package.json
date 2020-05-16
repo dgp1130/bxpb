@@ -7,7 +7,9 @@
   "homepage": "https://github.com/dgp1130/bxpb/tree/master/examples/greeter",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p dist/ && cp src/manifest.json dist/"
+    "build": "mkdir -p dist/ && npm run -s build:manifest && npm run -s build:popup",
+    "build:manifest": "cp src/manifest.json dist/",
+    "build:popup": "cp src/popup.html dist/"
   },
   "repository": {
     "type": "git",
