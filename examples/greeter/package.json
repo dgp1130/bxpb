@@ -6,6 +6,9 @@
   "author": "Doug Parker <dgp1130@users.noreply.github.com>",
   "homepage": "https://github.com/dgp1130/bxpb/tree/master/examples/greeter",
   "license": "MIT",
+  "scripts": {
+    "build": "mkdir -p dist/ && cp src/manifest.json dist/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dgp1130/bxpb.git"
