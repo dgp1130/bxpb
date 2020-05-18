@@ -1,7 +1,12 @@
-import { GreetRequest } from '../proto/foo/bar/greeter_pb';
+import { GreetRequest, GreetResponse } from '../proto/foo/bar/greeter_pb';
+import { serve } from 'bxpb-runtime/dist/service';
+import { greeterService } from './greeter_service';
 
-const req = new GreetRequest();
-req.setName('Dave');
-
-// Just say hello for now.
-console.log(`Hello ${req.getName()}!`);
+// Run and implement GreeterService.
+serve(chrome.runtime.onMessage, greeterService, {
+    async Greet(req: GreetRequest): Promise<GreetResponse> {
+        const res = new GreetResponse();
+        res.setMessage(`Hello, ${req.getName()}!`);
+        return res;
+    }
+});
