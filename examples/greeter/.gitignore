@@ -1,0 +1,3 @@
+# Ignore generated proto JavaScript files.
+proto/
+!*/**/proto/

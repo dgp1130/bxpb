@@ -8,7 +8,9 @@
     },
 
     "background": {
-        "page": "background.html",
+        "scripts": [ "background.js" ],
         "persistent": false
-    }
+    },
+
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';"
 }
