@@ -30,8 +30,6 @@
     "url": "https://github.com/dgp1130/bxpb/issues"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.106",
-    "@types/google-protobuf": "^3.7.2",
     "@types/jasmine": "^3.5.10",
     "grpc-tools": "^1.8.1",
     "karma": "^5.0.4",
@@ -43,6 +41,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@types/chrome": "^0.0.106",
+    "@types/google-protobuf": "^3.7.2",
     "google-protobuf": "^3.11.4"
   }
 }
