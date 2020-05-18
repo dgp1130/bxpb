@@ -11,22 +11,46 @@ function onwarn(warning, warn) {
     warn(warning);
 }
 
-export default {
-    input: 'src/background.ts',
-    output: {
-        name: 'background',
-        file: 'dist/background.js',
-        sourcemap: 'inline',
-        format: 'iife',
+export default [
+    // Build JavaScript for background script.
+    {
+        input: 'src/background.ts',
+        output: {
+            name: 'background',
+            file: 'dist/background.js',
+            sourcemap: 'inline',
+            format: 'iife',
+        },
+        plugins: [
+            typescript(),
+            resolve({
+                browser: true,
+            }),
+            commonjs({
+                extensions: ['.js', '.ts'],
+            }),
+        ],
+        onwarn,
     },
-    plugins: [
-        typescript(),
-        resolve({
-            browser: true,
-        }),
-        commonjs({
-            extensions: ['.js', '.ts'],
-        }),
-    ],
-    onwarn,
-}
+
+    // Build JavaScript for popup window.
+    {
+        input: 'src/popup.ts',
+        output: {
+            name: 'popup',
+            file: 'dist/popup.js',
+            sourcemap: 'inline',
+            format: 'iife',
+        },
+        plugins: [
+            typescript(),
+            resolve({
+                browser: true,
+            }),
+            commonjs({
+                extensions: ['.js', '.ts'],
+            }),
+        ],
+        onwarn,
+    },
+];
