@@ -23,7 +23,7 @@
     "bxpb-protoc-plugin": "bin/bxpb-protoc-plugin"
   },
   "scripts": {
-    "run": "bin/bxpb-protoc-plugin",
+    "start": "bin/bxpb-protoc-plugin",
     "build": "tsc -p tsconfig.bin.json",
     "build:test": "tsc -p tsconfig.spec.json",
     "test": "npm run -s build:test && jasmine --config=jasmine.json",

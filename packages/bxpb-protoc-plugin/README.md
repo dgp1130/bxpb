@@ -27,3 +27,28 @@ generated/greeter_bxpb_client.js
 
 The first two files contain definitions to run the proto service, while the last two files contain
 definitions to call the service.
+
+## Local Development
+
+### Build and Run
+
+To build this package, run from the repository root:
+
+```shell
+npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies
+```
+
+Output files are in the `dist/` directory, while the binary can be invoked with:
+
+```shell
+npm run -- lerna run start --stream --scope bxpb-protoc-plugin
+```
+
+### Test
+
+Build and run unit tests with this command (run from the repository root):
+
+```shell
+npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies &&
+    npm run -- lerna run test --stream --scope bxpb-protoc-plugin
+```
