@@ -1,0 +1,28 @@
+{
+  "name": "bxpb-protoc-plugin",
+  "version": "0.0.0",
+  "description": "Complier plugin for `protoc` to generate TypeScript client/service definitions for protocol buffers.",
+  "keywords": [
+    "browser-extension",
+    "browser-extensions",
+    "chrome-extension",
+    "chrome-extensions",
+    "protocol-buffers",
+    "library",
+    "service",
+    "services"
+  ],
+  "author": "Doug Parker <dgp1130@users.noreply.github.com>",
+  "homepage": "https://github.com/dgp1130/bxpb#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgp1130/bxpb.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/dgp1130/bxpb/issues"
+  }
+}
