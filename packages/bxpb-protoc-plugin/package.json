@@ -19,10 +19,18 @@
     "type": "git",
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
+  "bin": {
+    "bxpb-protoc-plugin": "bin/bxpb-protoc-plugin"
+  },
   "scripts": {
+    "run": "bin/bxpb-protoc-plugin",
+    "build": "tsc",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
   }
 }
