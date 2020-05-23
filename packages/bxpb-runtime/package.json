@@ -22,9 +22,9 @@
   "scripts": {
     "build": "tsc -p tsconfig.lib.json",
     "build:test-data": "mkdir -p generated/test_data/ && grpc_tools_node_protoc --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:generated/test_data/ --ts_out=generated/test_data/ --proto_path src/test_data/ src/test_data/*.proto",
-    "build:test": "npm run -s build:test-data && tsc -p tsconfig.spec.json",
     "test": "npm run -s build:test-data && karma start --browsers ChromeHeadless --singleRun",
-    "test:debug": "npm run -s build:test-data && karma start"
+    "test:debug": "npm run -s build:test-data && karma start",
+    "clean": "rm -rf dist/ generated/ test-out/ coverage/"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
