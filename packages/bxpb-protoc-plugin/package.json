@@ -27,6 +27,7 @@
     "build": "tsc -p tsconfig.bin.json",
     "build:test": "tsc -p tsconfig.spec.json",
     "test": "npm run -s build:test && jasmine --config=jasmine.json",
+    "test:debug": "npm run -s build:test && node --inspect-brk node_modules/.bin/jasmine --config=jasmine.json",
     "clean": "rm -rf dist/ test-out/"
   },
   "bugs": {

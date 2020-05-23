@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "bxpb-protoc-plugin - Test Debug",
+            "program": "${workspaceFolder}/packages/bxpb-protoc-plugin/node_modules/.bin/jasmine",
+            "cwd": "${workspaceFolder}/packages/bxpb-protoc-plugin/",
+            "args": [
+                "--config=jasmine.json"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "preLaunchTask": {
+                "type": "npm",
+                "script": "build:test",
+                "path": "packages/bxpb-protoc-plugin/"
+            }
+        }
+    ]
+}

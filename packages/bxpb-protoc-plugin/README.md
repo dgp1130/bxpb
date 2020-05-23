@@ -52,3 +52,22 @@ Build and run unit tests with this command (run from the repository root):
 npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies &&
     npm run -- lerna run test --stream --scope bxpb-protoc-plugin
 ```
+
+You can debug tests in VSCode with the
+["bxpb-protoc-plugin - Test Debug" launch configuration](/.vscode/launch.json).
+
+Sourcemaps seem to work fine, though breakpoints are finicky; sometimes they trigger and sometimes
+not. The `debugger;` statement is the most reliable way to break in the file.
+
+You can also test with any other Node inspector by using:
+
+```shell
+npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies &&
+    npm run -- lerna run test:debug --stream --scope bxpb-protoc-plugin
+```
+
+And then connecting to Node debug port exposed in your preferred debugger. For Chrome, this is done
+by visiting [`chrome://inspect`](chrome://inspect) and clicking "Open dedicated DevTools for Node".
+
+Place a `debugger;` statement at the top of the file you are interested in, and then hit "continue"
+until you reach that file. You should then be able to place and use breakpoints as desired.
