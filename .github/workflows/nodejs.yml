@@ -21,5 +21,5 @@ jobs:
         node-version: 12.x
     - run: npm ci
     - run: npm run -- lerna bootstrap --ci
-    - run: npm run -- lerna run build
-    - run: npm run -- lerna run test
+    - run: npm run -- lerna run build --stream
+    - run: npm run -- lerna run test --stream
