@@ -11,9 +11,9 @@ type ServiceImplementation<T extends ServiceDescriptor<any>> = {
 };
 
 /** The implementation required to support the provided method. */
-type MethodImplementation<Descriptor extends MethodDescriptor<Message, Message>> =
-    (req: Descriptor extends MethodDescriptor<infer Request, Message> ? Request : never)
-        => Descriptor extends MethodDescriptor<Message, infer Response> ? Promise<Response> : never;
+type MethodImplementation<Descriptor extends MethodDescriptor<string, Message, Message>> =
+    (req: Descriptor extends MethodDescriptor<string, infer Request, Message> ? Request : never)
+        => Descriptor extends MethodDescriptor<string, Message, infer Response> ? Promise<Response> : never;
 
 /**
  * Serve the given service on the given transport.
@@ -112,7 +112,7 @@ async function handleRequestDangerously<T extends ServiceDescriptor<any>>(
  * @returns The response protobuf serialized to binary and decodeable with {@link decode}.
  */
 async function callMethod(
-    methodDescriptor: MethodDescriptor<Message, Message>,
+    methodDescriptor: MethodDescriptor<string, Message, Message>,
     method: (req: Message) => Promise<Message>,
     req: string,
 ): Promise<string> {

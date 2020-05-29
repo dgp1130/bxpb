@@ -30,7 +30,7 @@ export abstract class ProtoClient {
 export async function rpc<Req extends Message, Res extends Message>(
     sendMessage: ProtoTransport,
     service: ServiceDescriptor<any>,
-    method: MethodDescriptor<Req, Res>,
+    method: MethodDescriptor<string, Req, Res>,
     req: Req,
 ): Promise<Res> {
     // Send request to backend and await the response.

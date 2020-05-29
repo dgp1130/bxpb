@@ -7,14 +7,14 @@ export interface ServiceDescriptor<Implementation extends ServiceDescriptor<any>
 
     /** Map of unqualified method name to its descriptor. */
     readonly methods: {
-        readonly [K in keyof Implementation['methods']]: MethodDescriptor<Message, Message>;
+        readonly [K in keyof Implementation['methods']]: MethodDescriptor<string, Message, Message>;
     };
 }
 
 /** Descriptor of metadata related to a proto service method. */
-export interface MethodDescriptor<Req extends Message, Res extends Message> {
+export interface MethodDescriptor<Name extends string, Req extends Message, Res extends Message> {
     /** Unqualified method name. */
-    readonly name: string;
+    readonly name: Name;
 
     /**
      * Function which serializes a request message.
