@@ -61,7 +61,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
 
-        it('generates files in subdirectory', async () => {
+        it('generates files in subdirectory', () => {
             const [ jsFile, dtsFile ] = Array.from(generateDescriptorFiles(
                 'hello/world/foo.proto', dummyFileDescriptor()));
 
@@ -70,7 +70,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             expect(dtsFile.getName()).toBe('hello/world/foo_bxdescriptors.d.ts');
         });
 
-        it('generates files with no package', async () => {
+        it('generates files with no package', () => {
             const fileDescriptor = dummyFileDescriptor({
                 pkg: null, // Caller forgot to set package.
                 services: [
@@ -126,7 +126,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
 
-        it('throws when given a method with no name', async () => {
+        it('throws when given a method with no name', () => {
             const fileDescriptor = dummyFileDescriptor({
                 services: [
                     {
@@ -147,7 +147,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             ;
         });
 
-        it('throws when given a method with no input type', async () => {
+        it('throws when given a method with no input type', () => {
             const fileDescriptor = dummyFileDescriptor({
                 services: [
                     {
@@ -168,7 +168,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             ;
         });
 
-        it('throws when given a method with no output type', async () => {
+        it('throws when given a method with no output type', () => {
             const fileDescriptor = dummyFileDescriptor({
                 services: [
                     {
@@ -189,7 +189,7 @@ export const FooService: ServiceDescriptor<IFooService>;
             ;
         });
 
-        it('throws when given a service with no name', async () => {
+        it('throws when given a service with no name', () => {
             const fileDescriptor = dummyFileDescriptor({
                 services: [
                     {
