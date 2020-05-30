@@ -3,6 +3,7 @@ import { CodeGeneratorRequest, CodeGeneratorResponse } from 'google-protobuf/goo
 import { execute } from "./plugin";
 import { dummyFileDescriptor, dummyCodegenRequest, dummyCodegenResponseFile } from './testing/dummies';
 import * as descriptorGenerator from './generators/descriptors';
+import * as serviceGenerator from './generators/services';
 
 /** Helper function to invoke the plugin's {@link execute} method in a simple fashion. */
 async function invokePlugin(req: CodeGeneratorRequest): Promise<CodeGeneratorResponse> {
@@ -45,18 +46,37 @@ describe('plugin', () => {
                 }),
             ]);
 
+            spyOn(serviceGenerator, 'generateServiceFiles').and.returnValue([
+                dummyCodegenResponseFile({
+                    name: 'foo_services.js',
+                    content: 'export const services = [ /* ... */ ];',
+                }),
+                dummyCodegenResponseFile({
+                    name: 'foo_services.d.ts',
+                    content: 'export const services: Service[];',
+                }),
+            ]);
+
             const res = await invokePlugin(req);
 
             expect(descriptorGenerator.generateDescriptorFiles).toHaveBeenCalledWith(
                 'foo.proto', dummyFileDescriptor());
+            expect(serviceGenerator.generateServiceFiles).toHaveBeenCalledWith(
+                'foo.proto', dummyFileDescriptor());
 
-            const [ descriptorJs, descriptorDts ] = res.getFileList();
+            const [ descriptorJs, descriptorDts, serviceJs, serviceDts ] = res.getFileList();
             
             expect(descriptorJs.getName()).toBe('foo_descriptors.js');
             expect(descriptorJs.getContent()).toBe('export const descriptors = [ /* ... */ ];');
 
             expect(descriptorDts.getName()).toBe('foo_descriptors.d.ts');
             expect(descriptorDts.getContent()).toBe('export const descriptors: Descriptor[];');
+            
+            expect(serviceJs.getName()).toBe('foo_services.js');
+            expect(serviceJs.getContent()).toBe('export const services = [ /* ... */ ];');
+
+            expect(serviceDts.getName()).toBe('foo_services.d.ts');
+            expect(serviceDts.getContent()).toBe('export const services: Service[];');
         });
 
         it('generates from multiple proto source files', async () => {
@@ -90,6 +110,20 @@ describe('plugin', () => {
                 ],
             );
 
+            spyOn(serviceGenerator, 'generateServiceFiles').and.returnValues(
+                // Call to generate foo.proto.
+                [
+                    dummyCodegenResponseFile({ name: 'foo_services.js' }),
+                    dummyCodegenResponseFile({ name: 'foo_services.d.ts' }),
+                ],
+
+                // Call to generate bar.proto.
+                [
+                    dummyCodegenResponseFile({ name: 'bar_services.js' }),
+                    dummyCodegenResponseFile({ name: 'bar_services.d.ts' }),
+                ],
+            );
+
             const res = await invokePlugin(req);
 
             expect(descriptorGenerator.generateDescriptorFiles).toHaveBeenCalledTimes(2);
@@ -110,13 +144,36 @@ describe('plugin', () => {
                 }),
             );
 
-            const [ fooDescriptorJs, fooDescriptorDts, barDescriptorJs, barDescriptorDts ] =
+            expect(serviceGenerator.generateServiceFiles).toHaveBeenCalledTimes(2);
+            expect(serviceGenerator.generateServiceFiles).toHaveBeenCalledWith(
+                'foo.proto',
+                dummyFileDescriptor({
+                    services: [
+                        { name: 'Foo' },
+                    ],
+                }),
+            );
+            expect(serviceGenerator.generateServiceFiles).toHaveBeenCalledWith(
+                'bar.proto',
+                dummyFileDescriptor({
+                    services: [
+                        { name: 'Bar' },
+                    ],
+                }),
+            );
+
+            const [ fooDescriptorJs, fooDescriptorDts, fooServiceJs, fooServiceDts,
+                    barDescriptorJs, barDescriptorDts, barServiceJs, barServiceDts ] =
                     res.getFileList();
             
             expect(fooDescriptorJs.getName()).toBe('foo_descriptors.js');
             expect(fooDescriptorDts.getName()).toBe('foo_descriptors.d.ts');
+            expect(fooServiceJs.getName()).toBe('foo_services.js');
+            expect(fooServiceDts.getName()).toBe('foo_services.d.ts');
             expect(barDescriptorJs.getName()).toBe('bar_descriptors.js');
             expect(barDescriptorDts.getName()).toBe('bar_descriptors.d.ts');
+            expect(barServiceJs.getName()).toBe('bar_services.js');
+            expect(barServiceDts.getName()).toBe('bar_services.d.ts');
         });
 
         it('generates from source file with no services', async () => {
@@ -130,10 +187,12 @@ describe('plugin', () => {
             });
 
             spyOn(descriptorGenerator, 'generateDescriptorFiles');
+            spyOn(serviceGenerator, 'generateServiceFiles');
 
             const res = await invokePlugin(req);
 
             expect(descriptorGenerator.generateDescriptorFiles).not.toHaveBeenCalled();
+            expect(serviceGenerator.generateServiceFiles).not.toHaveBeenCalled();
 
             expect(res.getFileList()).toEqual([]);
         });

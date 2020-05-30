@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import { CodeGeneratorRequest, CodeGeneratorResponse } from 'google-protobuf/google/protobuf/compiler/plugin_pb';
 import { FileDescriptorProto } from 'google-protobuf/google/protobuf/descriptor_pb';
 import * as descriptorGenerator from './generators/descriptors';
+import * as serviceGenerator from './generators/services';
 
 /**
  * Executes the plugin by reading a serialized {@link CodeGeneratorRequest} from stdin and writing a
@@ -58,9 +59,9 @@ function* generateProto(file: string, fileDescriptor: FileDescriptorProto):
 
     // Generate descriptors.
     yield* descriptorGenerator.generateDescriptorFiles(file, fileDescriptor);
+    yield* serviceGenerator.generateServiceFiles(file, fileDescriptor);
 
     // TODO: Generate client.
-    // TODO: Generate service.
 }
 
 /**
