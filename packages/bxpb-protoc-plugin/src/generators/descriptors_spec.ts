@@ -61,6 +61,107 @@ export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
 
+        it('generates multiple services in a single file', () => {
+            const fileDescriptor = dummyFileDescriptor({
+                pkg: 'hello.world',
+                services: [
+                    {
+                        name: 'Foo',
+                        methods: [
+                            {
+                                name: 'FooMethod',
+                                inputType: 'FooMethodRequest',
+                                outputType: 'FooMethodResponse',
+                            },
+                        ],
+                    },
+                    {
+                        name: 'Bar',
+                        methods: [
+                            {
+                                name: 'BarMethod',
+                                inputType: 'BarMethodRequest',
+                                outputType: 'BarMethodResponse',
+                            },
+                        ],
+                    },
+                ],
+            });
+
+            const [ jsFile, dtsFile ] = Array.from(
+                generateDescriptorFiles('foo.proto', fileDescriptor));
+            
+            expect(jsFile.getContent()).toBe(`
+import protos from './foo_pb.js';
+
+/** Service descriptor for Foo. */
+export const FooService = Object.freeze({
+    serviceNameFq: 'hello.world.Foo',
+    methods: {
+        FooMethod: {
+            name: 'FooMethod',
+            requestSerialize: (message) => message.serializeBinary(),
+            requestDeserialize: (message) => protos.FooMethodRequest.deserializeBinary(message),
+            responseSerialize: (message) => message.serializeBinary(),
+            responseDeserialize: (message) => protos.FooMethodResponse.deserializeBinary(message),
+        },
+    },
+});
+
+/** Service descriptor for Bar. */
+export const BarService = Object.freeze({
+    serviceNameFq: 'hello.world.Bar',
+    methods: {
+        BarMethod: {
+            name: 'BarMethod',
+            requestSerialize: (message) => message.serializeBinary(),
+            requestDeserialize: (message) => protos.BarMethodRequest.deserializeBinary(message),
+            responseSerialize: (message) => message.serializeBinary(),
+            responseDeserialize: (message) => protos.BarMethodResponse.deserializeBinary(message),
+        },
+    },
+});
+            `.trim());
+
+            expect(dtsFile.getContent()).toBe(`
+import { Message } from 'google-protobuf';
+import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import protos from './foo_pb';
+
+/** Interface of Foo's service descriptor. */
+export interface IFooService extends ServiceDescriptor<any> {
+    readonly serviceNameFq: 'hello.world.Foo';
+    readonly methods: {
+        readonly FooMethod: MethodDescriptor<'FooMethod', protos.FooMethodRequest, protos.FooMethodResponse>;
+    };
+}
+
+/** Service descriptor for Foo. */
+export const FooService: ServiceDescriptor<IFooService>;
+
+/** Interface of Bar's service descriptor. */
+export interface IBarService extends ServiceDescriptor<any> {
+    readonly serviceNameFq: 'hello.world.Bar';
+    readonly methods: {
+        readonly BarMethod: MethodDescriptor<'BarMethod', protos.BarMethodRequest, protos.BarMethodResponse>;
+    };
+}
+
+/** Service descriptor for Bar. */
+export const BarService: ServiceDescriptor<IBarService>;
+            `.trim());
+        });
+
+        it('generates nothing if there are no services in the file', () => {
+            const fileDescriptor = dummyFileDescriptor({
+                services: [], // No services in the file.
+            });
+
+            const generatedFiles = Array.from(generateDescriptorFiles('foo.proto', fileDescriptor));
+
+            expect(generatedFiles).toEqual([]);
+        });
+
         it('generates files in subdirectory', () => {
             const [ jsFile, dtsFile ] = Array.from(generateDescriptorFiles(
                 'hello/world/foo.proto', dummyFileDescriptor()));

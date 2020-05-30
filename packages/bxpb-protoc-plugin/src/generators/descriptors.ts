@@ -9,6 +9,9 @@ import { getFullyQualifiedServiceName, getRelativeRequestType, getRelativeRespon
  */
 export function* generateDescriptorFiles(file: string, fileDescriptor: FileDescriptorProto):
         Iterable<CodeGeneratorResponse.File> {
+    // If there are no services, don't generate anything.
+    if (fileDescriptor.getServiceList().length === 0) return;
+
     const filePath = path.parse(file);
     const generatedBaseName = `${filePath.name}_bxdescriptors`;
 
