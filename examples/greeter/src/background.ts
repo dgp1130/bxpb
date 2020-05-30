@@ -6,7 +6,7 @@ import { GreeterService } from '../proto/foo/bar/greeter_bxdescriptors';
 serve(chrome.runtime.onMessage, GreeterService, {
     async Greet(req: GreetRequest): Promise<GreetResponse> {
         const res = new GreetResponse();
-        res.setMessage(`Hello, ${req.getName()}!`);
+        res.setMessage(`Hello ${req.getName()}, from the background script!`);
         return res;
     }
 });
