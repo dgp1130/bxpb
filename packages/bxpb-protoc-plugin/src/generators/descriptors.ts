@@ -48,7 +48,7 @@ ${descriptor.getServiceList().map((service) => {
     if (!serviceName) throw new Error(`${path.format(filePath)}: Service has no name.`);
 
     return `
-/** Service descriptor for ${serviceName}. */
+/** Service descriptor for \`${serviceName}\`. */
 export const ${serviceName}Service = Object.freeze({
     serviceNameFq: '${getFullyQualifiedServiceName(descriptor.getPackage(), serviceName)}',
     methods: {
@@ -57,6 +57,7 @@ export const ${serviceName}Service = Object.freeze({
             if (!methodName) throw new Error(`Method in service \`${serviceName}\` has no name!`);
 
             return `
+        /** Method descriptor for \`${serviceName}.${methodName}\`. */
         ${methodName}: {
             name: '${methodName}',
             requestSerialize: (message) => message.serializeBinary(),
@@ -65,7 +66,7 @@ export const ${serviceName}Service = Object.freeze({
             responseDeserialize: (message) => protos.${getRelativeResponseType(method)}.deserializeBinary(message),
         },
             `.trim();
-        }).join('\n        ' /* two indents */)}
+        }).join('\n\n        ' /* two indents */)}
     },
 });
     `.trim();
@@ -85,7 +86,7 @@ ${descriptor.getServiceList().map((service) => {
     if (!serviceName) throw new Error(`${path.format(filePath)}: Service has no name.`);
 
     return `
-/** Interface of ${serviceName}'s service descriptor. */
+/** Interface of \`${serviceName}\`'s service descriptor. */
 export interface I${serviceName}Service extends ServiceDescriptor<any> {
     readonly serviceNameFq: '${getFullyQualifiedServiceName(descriptor.getPackage(), serviceName)}';
     readonly methods: {
@@ -94,13 +95,14 @@ export interface I${serviceName}Service extends ServiceDescriptor<any> {
             if (!methodName) throw new Error(`Method in service \`${serviceName}\` has no name!`);
 
             return `
-            readonly ${methodName}: MethodDescriptor<'${methodName}', protos.${getRelativeRequestType(method)}, protos.${getRelativeResponseType(method)}>;
+        /** Interface of \`${serviceName}.${methodName}\`'s method descriptor. */
+        readonly ${methodName}: MethodDescriptor<'${methodName}', protos.${getRelativeRequestType(method)}, protos.${getRelativeResponseType(method)}>;
             `.trim();
-        }).join('\n        ' /* two indents */)}
+        }).join('\n\n        ' /* two indents */)}
     };
 }
 
-/** Service descriptor for ${serviceName}. */
+/** Service descriptor for \`${serviceName}\`. */
 export const ${serviceName}Service: ServiceDescriptor<I${serviceName}Service>;
 `.trim();
 }).join('\n\n')}

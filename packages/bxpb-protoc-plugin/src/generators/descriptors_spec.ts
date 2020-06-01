@@ -27,10 +27,11 @@ describe('plugin', () => {
             expect(jsFile.getContent()).toBe(`
 import protos from './foo_pb.js';
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService = Object.freeze({
     serviceNameFq: 'hello.world.Foo',
     methods: {
+        /** Method descriptor for \`Foo.Bar\`. */
         Bar: {
             name: 'Bar',
             requestSerialize: (message) => message.serializeBinary(),
@@ -48,15 +49,16 @@ import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
 import protos from './foo_pb';
 
-/** Interface of Foo's service descriptor. */
+/** Interface of \`Foo\`'s service descriptor. */
 export interface IFooService extends ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
+        /** Interface of \`Foo.Bar\`'s method descriptor. */
         readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
     };
 }
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
@@ -94,10 +96,11 @@ export const FooService: ServiceDescriptor<IFooService>;
             expect(jsFile.getContent()).toBe(`
 import protos from './foo_pb.js';
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService = Object.freeze({
     serviceNameFq: 'hello.world.Foo',
     methods: {
+        /** Method descriptor for \`Foo.FooMethod\`. */
         FooMethod: {
             name: 'FooMethod',
             requestSerialize: (message) => message.serializeBinary(),
@@ -108,10 +111,11 @@ export const FooService = Object.freeze({
     },
 });
 
-/** Service descriptor for Bar. */
+/** Service descriptor for \`Bar\`. */
 export const BarService = Object.freeze({
     serviceNameFq: 'hello.world.Bar',
     methods: {
+        /** Method descriptor for \`Bar.BarMethod\`. */
         BarMethod: {
             name: 'BarMethod',
             requestSerialize: (message) => message.serializeBinary(),
@@ -128,26 +132,28 @@ import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
 import protos from './foo_pb';
 
-/** Interface of Foo's service descriptor. */
+/** Interface of \`Foo\`'s service descriptor. */
 export interface IFooService extends ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
+        /** Interface of \`Foo.FooMethod\`'s method descriptor. */
         readonly FooMethod: MethodDescriptor<'FooMethod', protos.FooMethodRequest, protos.FooMethodResponse>;
     };
 }
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService: ServiceDescriptor<IFooService>;
 
-/** Interface of Bar's service descriptor. */
+/** Interface of \`Bar\`'s service descriptor. */
 export interface IBarService extends ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Bar';
     readonly methods: {
+        /** Interface of \`Bar.BarMethod\`'s method descriptor. */
         readonly BarMethod: MethodDescriptor<'BarMethod', protos.BarMethodRequest, protos.BarMethodResponse>;
     };
 }
 
-/** Service descriptor for Bar. */
+/** Service descriptor for \`Bar\`. */
 export const BarService: ServiceDescriptor<IBarService>;
             `.trim());
         });
@@ -180,10 +186,11 @@ export const BarService: ServiceDescriptor<IBarService>;
             expect(jsFile.getContent()).toBe(`
 import protos from './foo_pb.js';
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService = Object.freeze({
     serviceNameFq: 'hello.world.Foo',
     methods: {
+        /** Method descriptor for \`Foo.Bar\`. */
         Bar: {
             name: 'Bar',
             requestSerialize: (message) => message.serializeBinary(),
@@ -191,6 +198,8 @@ export const FooService = Object.freeze({
             responseSerialize: (message) => message.serializeBinary(),
             responseDeserialize: (message) => protos.BarResponse.deserializeBinary(message),
         },
+
+        /** Method descriptor for \`Foo.Baz\`. */
         Baz: {
             name: 'Baz',
             requestSerialize: (message) => message.serializeBinary(),
@@ -207,16 +216,19 @@ import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
 import protos from './foo_pb';
 
-/** Interface of Foo's service descriptor. */
+/** Interface of \`Foo\`'s service descriptor. */
 export interface IFooService extends ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
+        /** Interface of \`Foo.Bar\`'s method descriptor. */
         readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
+
+        /** Interface of \`Foo.Baz\`'s method descriptor. */
         readonly Baz: MethodDescriptor<'Baz', protos.BazRequest, protos.BazResponse>;
     };
 }
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
@@ -263,10 +275,11 @@ export const FooService: ServiceDescriptor<IFooService>;
             expect(jsFile.getContent()).toBe(`
 import protos from './foo_pb.js';
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService = Object.freeze({
     serviceNameFq: 'Foo',
     methods: {
+        /** Method descriptor for \`Foo.Bar\`. */
         Bar: {
             name: 'Bar',
             requestSerialize: (message) => message.serializeBinary(),
@@ -283,15 +296,16 @@ import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
 import protos from './foo_pb';
 
-/** Interface of Foo's service descriptor. */
+/** Interface of \`Foo\`'s service descriptor. */
 export interface IFooService extends ServiceDescriptor<any> {
     readonly serviceNameFq: 'Foo';
     readonly methods: {
+        /** Interface of \`Foo.Bar\`'s method descriptor. */
         readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
     };
 }
 
-/** Service descriptor for Foo. */
+/** Service descriptor for \`Foo\`. */
 export const FooService: ServiceDescriptor<IFooService>;
             `.trim());
         });
