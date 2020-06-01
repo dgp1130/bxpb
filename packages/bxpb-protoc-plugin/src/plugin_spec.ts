@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 import { CodeGeneratorRequest, CodeGeneratorResponse } from 'google-protobuf/google/protobuf/compiler/plugin_pb';
-import { execute } from "./plugin";
+import { execute } from './plugin';
 import { dummyFileDescriptor, dummyCodegenRequest, dummyCodegenResponseFile } from './testing/dummies';
 import * as descriptorGenerator from './generators/descriptors';
 import * as serviceGenerator from './generators/services';

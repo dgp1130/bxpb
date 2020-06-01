@@ -1,5 +1,5 @@
-import { dummyFileDescriptor } from "../testing/dummies";
-import { generateServiceFiles } from "./services";
+import { dummyFileDescriptor } from '../testing/dummies';
+import { generateServiceFiles } from './services';
 
 describe('services', () => {
     describe('generateServiceFiles()', () => {

@@ -1,8 +1,8 @@
-import { ProtoClient, rpc } from "./client";
-import { ProtoRequest, ProtoResponse } from "./wire_format";
-import { ServiceDescriptor } from "./descriptors";
-import { GreetRequest, GreetResponse, UnrelatedMessage } from "generated/test_data/greeter_pb";
-import { encode } from "./encoders";
+import { ProtoClient, rpc } from './client';
+import { ProtoRequest, ProtoResponse } from './wire_format';
+import { ServiceDescriptor } from './descriptors';
+import { GreetRequest, GreetResponse, UnrelatedMessage } from 'generated/test_data/greeter_pb';
+import { encode } from './encoders';
 
 /** Example proto service for testing. */
 const greeterService: Readonly<ServiceDescriptor<any>> = Object.freeze({

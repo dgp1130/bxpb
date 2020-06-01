@@ -1,4 +1,4 @@
-import { generateDescriptorFiles } from "./descriptors";
+import { generateDescriptorFiles } from './descriptors';
 import { dummyFileDescriptor } from '../testing/dummies';
 
 describe('plugin', () => {

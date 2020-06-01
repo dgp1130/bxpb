@@ -1,7 +1,7 @@
-import { Message } from "google-protobuf";
-import { ServiceDescriptor, MethodDescriptor } from "./descriptors";
-import { ProtoRequest, ProtoResponse } from "./wire_format";
-import { encode, decode } from "./encoders";
+import { Message } from 'google-protobuf';
+import { ServiceDescriptor, MethodDescriptor } from './descriptors';
+import { ProtoRequest, ProtoResponse } from './wire_format';
+import { encode, decode } from './encoders';
 
 type ProtoTransport = typeof chrome.runtime.sendMessage;
 

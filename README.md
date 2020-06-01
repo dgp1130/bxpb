@@ -70,8 +70,8 @@ using:
 ```typescript
 // client.ts
 
-import { GreeterClient } from "./protos/greeter_bx"; // Generated service.
-import { HelloRequest } from "./protos/greeter_pb";
+import { GreeterClient } from './protos/greeter_bx'; // Generated service.
+import { HelloRequest } from './protos/greeter_pb';
 
 (async () => {
     const client = new GreeterClient(chrome.runtime.sendMessage);

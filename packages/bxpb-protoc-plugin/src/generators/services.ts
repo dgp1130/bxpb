@@ -1,6 +1,6 @@
 import * as path from 'path';
-import { FileDescriptorProto } from "google-protobuf/google/protobuf/descriptor_pb";
-import { CodeGeneratorResponse } from "google-protobuf/google/protobuf/compiler/plugin_pb";
+import { FileDescriptorProto } from 'google-protobuf/google/protobuf/descriptor_pb';
+import { CodeGeneratorResponse } from 'google-protobuf/google/protobuf/compiler/plugin_pb';
 
 /**
  * Returns an iterable of generated BXPB services from the given *.proto file and its descriptor.

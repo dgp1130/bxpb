@@ -1,5 +1,5 @@
-import { getFullyQualifiedServiceName, getRelativeRequestType, getRelativeResponseType } from "./utilities";
-import { dummyMethod } from "../testing/dummies";
+import { getFullyQualifiedServiceName, getRelativeRequestType, getRelativeResponseType } from './utilities';
+import { dummyMethod } from '../testing/dummies';
 
 describe('utilities', () => {
     describe('getFullyQualifiedServiceName()', () => {

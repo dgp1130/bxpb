@@ -1,4 +1,4 @@
-import { encode, decode } from "./encoders";
+import { encode, decode } from './encoders';
 
 describe('encoders', () => {
     it('encodes and decodes the given binary data as a base64 string', () => {
