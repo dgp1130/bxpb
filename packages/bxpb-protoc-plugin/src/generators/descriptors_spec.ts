@@ -152,6 +152,75 @@ export const BarService: ServiceDescriptor<IBarService>;
             `.trim());
         });
 
+        it('generates multiple methods in a single service', () => {
+            const fileDescriptor = dummyFileDescriptor({
+                pkg: 'hello.world',
+                services: [
+                    {
+                        name: 'Foo',
+                        methods: [
+                            {
+                                name: 'Bar',
+                                inputType: 'BarRequest',
+                                outputType: 'BarResponse',
+                            },
+                            {
+                                name: 'Baz',
+                                inputType: 'BazRequest',
+                                outputType: 'BazResponse',
+                            },
+                        ],
+                    },
+                ],
+            });
+
+            const [ jsFile, dtsFile ] = Array.from(
+                generateDescriptorFiles('foo.proto', fileDescriptor));
+            
+            expect(jsFile.getContent()).toBe(`
+import protos from './foo_pb.js';
+
+/** Service descriptor for Foo. */
+export const FooService = Object.freeze({
+    serviceNameFq: 'hello.world.Foo',
+    methods: {
+        Bar: {
+            name: 'Bar',
+            requestSerialize: (message) => message.serializeBinary(),
+            requestDeserialize: (message) => protos.BarRequest.deserializeBinary(message),
+            responseSerialize: (message) => message.serializeBinary(),
+            responseDeserialize: (message) => protos.BarResponse.deserializeBinary(message),
+        },
+        Baz: {
+            name: 'Baz',
+            requestSerialize: (message) => message.serializeBinary(),
+            requestDeserialize: (message) => protos.BazRequest.deserializeBinary(message),
+            responseSerialize: (message) => message.serializeBinary(),
+            responseDeserialize: (message) => protos.BazResponse.deserializeBinary(message),
+        },
+    },
+});
+            `.trim());
+
+            expect(dtsFile.getContent()).toBe(`
+import { Message } from 'google-protobuf';
+import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import protos from './foo_pb';
+
+/** Interface of Foo's service descriptor. */
+export interface IFooService extends ServiceDescriptor<any> {
+    readonly serviceNameFq: 'hello.world.Foo';
+    readonly methods: {
+        readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
+        readonly Baz: MethodDescriptor<'Baz', protos.BazRequest, protos.BazResponse>;
+    };
+}
+
+/** Service descriptor for Foo. */
+export const FooService: ServiceDescriptor<IFooService>;
+            `.trim());
+        });
+
         it('generates nothing if there are no services in the file', () => {
             const fileDescriptor = dummyFileDescriptor({
                 services: [], // No services in the file.
