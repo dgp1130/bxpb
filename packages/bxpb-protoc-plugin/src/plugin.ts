@@ -3,6 +3,7 @@ import { CodeGeneratorRequest, CodeGeneratorResponse } from 'google-protobuf/goo
 import { FileDescriptorProto } from 'google-protobuf/google/protobuf/descriptor_pb';
 import * as descriptorGenerator from './generators/descriptors';
 import * as serviceGenerator from './generators/services';
+import * as clientGenerator from './generators/clients';
 
 /**
  * Executes the plugin by reading a serialized {@link CodeGeneratorRequest} from stdin and writing a
@@ -57,11 +58,10 @@ function* generateProto(file: string, fileDescriptor: FileDescriptorProto):
     // If there are no services, there is nothing to generate.
     if (fileDescriptor.getServiceList().length === 0) return [];
 
-    // Generate descriptors.
+    // Generate proto code.
     yield* descriptorGenerator.generateDescriptorFiles(file, fileDescriptor);
     yield* serviceGenerator.generateServiceFiles(file, fileDescriptor);
-
-    // TODO: Generate client.
+    yield* clientGenerator.generateClientFiles(file, fileDescriptor);
 }
 
 /**
