@@ -1,4 +1,4 @@
-import { GreeterClient } from './greeter_client';
+import { GreeterClient } from '../proto/foo/bar/greeter_bxclients';
 import { GreetRequest } from '../proto/foo/bar/greeter_pb';
 
 document.addEventListener('DOMContentLoaded', () => {
