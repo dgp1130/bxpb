@@ -78,7 +78,7 @@ export const ${serviceName}Service = Object.freeze({
 function generateDescriptorDts(filePath: path.ParsedPath, descriptor: FileDescriptorProto): string {
     return `
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './${filePath.name}_pb';
 
 ${descriptor.getServiceList().map((service) => {

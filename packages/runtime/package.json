@@ -1,5 +1,5 @@
 {
-  "name": "bxpb-runtime",
+  "name": "@bxpb/runtime",
   "version": "0.0.0",
   "description": "Runtime library for browser extension protocol buffers.",
   "keywords": [
@@ -13,7 +13,7 @@
     "services"
   ],
   "author": "Doug Parker <dgp1130@users.noreply.github.com>",
-  "homepage": "https://github.com/dgp1130/bxpb/packages/bxpb-runtime/",
+  "homepage": "https://github.com/dgp1130/bxpb/packages/runtime/",
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -36,7 +36,7 @@ export function* generateClientFiles(file: string, fileDescriptor: FileDescripto
 /** Returns the generated JavaScript source as a string. */
 function generateClientJs(filePath: path.ParsedPath, fileDescriptor: FileDescriptorProto): string {
     return `
-import { ProtoClient, rpc } from 'bxpb-runtime/dist/client.js';
+import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
 import * as descriptors from './${filePath.name}_bxdescriptors.js';
 
 ${fileDescriptor.getServiceList().map((service) => {
@@ -66,7 +66,7 @@ export class ${serviceName}Client extends ProtoClient {
 /** Returns the generated TypeScript definitions as a string. */
 function generateClientDts(filePath: path.ParsedPath, fileDescriptor: FileDescriptorProto): string {
     return `
-import { ProtoClient } from 'bxpb-runtime/dist/client';
+import { ProtoClient } from '@bxpb/runtime/dist/client';
 import protos from './${filePath.name}_pb';
 import * as descriptors from './${filePath.name}_bxdescriptors';
 

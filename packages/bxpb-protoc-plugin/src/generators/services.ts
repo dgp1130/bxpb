@@ -45,7 +45,7 @@ function generateServiceJs(filePath: path.ParsedPath, descriptor: FileDescriptor
     });
 
     return `
-import { serve } from 'bxpb-runtime/dist/service.js';
+import { serve } from '@bxpb/runtime/dist/service.js';
 import * as descriptors from './${filePath.name}_bxdescriptors.js';
 
 ${serviceNames.map((serviceName) => `
@@ -69,7 +69,7 @@ function generateServiceDts(filePath: path.ParsedPath, descriptor: FileDescripto
     });
 
     return `
-import { Transport, ServiceImplementation } from 'bxpb-runtime/dist/service';
+import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
 import * as descriptors from './${filePath.name}_bxdescriptors';
 
 ${serviceNames.map((serviceName) => `

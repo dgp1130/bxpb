@@ -46,7 +46,7 @@ export const FooService = Object.freeze({
             expect(dtsFile.getName()).toBe('foo_bxdescriptors.d.ts');
             expect(dtsFile.getContent()).toBe(`
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
@@ -129,7 +129,7 @@ export const BarService = Object.freeze({
 
             expect(dtsFile.getContent()).toBe(`
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
@@ -213,7 +213,7 @@ export const FooService = Object.freeze({
 
             expect(dtsFile.getContent()).toBe(`
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
@@ -293,7 +293,7 @@ export const FooService = Object.freeze({
 
             expect(dtsFile.getContent()).toBe(`
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from 'bxpb-runtime/dist/descriptors';
+import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */

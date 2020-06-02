@@ -24,7 +24,7 @@ describe('clients', ()=> {
 
             expect(jsFile.getName()).toBe('foo_bxclients.js');
             expect(jsFile.getContent()).toBe(`
-import { ProtoClient, rpc } from 'bxpb-runtime/dist/client.js';
+import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
@@ -38,7 +38,7 @@ export class FooClient extends ProtoClient {
 
             expect(dtsFile.getName()).toBe('foo_bxclients.d.ts');
             expect(dtsFile.getContent()).toBe(`
-import { ProtoClient } from 'bxpb-runtime/dist/client';
+import { ProtoClient } from '@bxpb/runtime/dist/client';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 
@@ -80,7 +80,7 @@ export class FooClient extends ProtoClient {
                 generateClientFiles('foo.proto', fileDescriptor));
             
             expect(jsFile.getContent()).toBe(`
-import { ProtoClient, rpc } from 'bxpb-runtime/dist/client.js';
+import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
@@ -101,7 +101,7 @@ export class BarClient extends ProtoClient {
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
-import { ProtoClient } from 'bxpb-runtime/dist/client';
+import { ProtoClient } from '@bxpb/runtime/dist/client';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 
@@ -144,7 +144,7 @@ export class BarClient extends ProtoClient {
                 generateClientFiles('foo.proto', fileDescriptor));
             
             expect(jsFile.getContent()).toBe(`
-import { ProtoClient, rpc } from 'bxpb-runtime/dist/client.js';
+import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
@@ -162,7 +162,7 @@ export class FooClient extends ProtoClient {
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
-import { ProtoClient } from 'bxpb-runtime/dist/client';
+import { ProtoClient } from '@bxpb/runtime/dist/client';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 

@@ -49,7 +49,7 @@ could implemented in a Chrome extension like so:
 ```typescript
 // service.ts
 
-import { servePort } from 'bxpb-runtime';
+import { servePort } from '@bxpb/runtime';
 import { GreeterService } from './protos/greeter_bx'; // Generated service.
 import { HelloRequest, HelloResponse } from './protos/greeter_pb';
 
@@ -93,7 +93,7 @@ The architecture will consist of a few packages:
 
 *   `bxpb-protoc-compiler`: A plugin for `protoc` which generates TypeScript client/service stubs
     for a given protobuf service.
-*   `bxpb-runtime`: A runtime to be included that performs the real work of communicating between
+*   `@bxpb/runtime`: A runtime to be included that performs the real work of communicating between
     the client and service in a generic fashion.
     *   This will include client and service stubs, rather than splitting them across multiple
         packages. This is to keep the number of packages down as much as possible.

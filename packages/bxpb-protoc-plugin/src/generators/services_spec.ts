@@ -17,7 +17,7 @@ describe('services', () => {
             
             expect(jsFile.getName()).toBe('foo_bxservices.js');
             expect(jsFile.getContent()).toBe(`
-import { serve } from 'bxpb-runtime/dist/service.js';
+import { serve } from '@bxpb/runtime/dist/service.js';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /**
@@ -31,7 +31,7 @@ export function serveFoo(transport, serviceImpl) {
 
             expect(dtsFile.getName()).toBe('foo_bxservices.d.ts');
             expect(dtsFile.getContent()).toBe(`
-import { Transport, ServiceImplementation } from 'bxpb-runtime/dist/service';
+import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
 import * as descriptors from './foo_bxdescriptors';
 
 /**
@@ -54,7 +54,7 @@ export function serveFoo(transport: Transport, serviceImpl: ServiceImplementatio
                 'foo.proto', fileDescriptor));
             
             expect(jsFile.getContent()).toBe(`
-import { serve } from 'bxpb-runtime/dist/service.js';
+import { serve } from '@bxpb/runtime/dist/service.js';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /**
@@ -75,7 +75,7 @@ export function serveBar(transport, serviceImpl) {
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
-import { Transport, ServiceImplementation } from 'bxpb-runtime/dist/service';
+import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
 import * as descriptors from './foo_bxdescriptors';
 
 /**
