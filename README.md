@@ -37,7 +37,7 @@ service Greeter {
 }
 ```
 
-They would compile it with the `bxpb-protoc-plugin`:
+They would compile it with the `@bxpb/protoc-plugin`:
 
 ```shell
 protoc --plugin=node_modules/.bin/bxpb-protoc-plugin --ts_out=protos/

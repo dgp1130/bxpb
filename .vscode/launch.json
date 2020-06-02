@@ -7,9 +7,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "bxpb-protoc-plugin - Test Debug",
-            "program": "${workspaceFolder}/packages/bxpb-protoc-plugin/node_modules/.bin/jasmine",
-            "cwd": "${workspaceFolder}/packages/bxpb-protoc-plugin/",
+            "name": "@bxpb/protoc-plugin - Test Debug",
+            "program": "${workspaceFolder}/packages/protoc-plugin/node_modules/.bin/jasmine",
+            "cwd": "${workspaceFolder}/packages/protoc-plugin/",
             "args": [
                 "--config=jasmine.json"
             ],
@@ -19,7 +19,7 @@
             "preLaunchTask": {
                 "type": "npm",
                 "script": "build:test",
-                "path": "packages/bxpb-protoc-plugin/"
+                "path": "packages/protoc-plugin/"
             }
         }
     ]

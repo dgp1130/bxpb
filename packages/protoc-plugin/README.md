@@ -1,4 +1,4 @@
-# `bxpb-protoc-plugin`
+# `@bxpb/protoc-plugin`
 
 The compiler plugin for `protoc` which generates client and service TypeScript code for `bxpb`.
 
@@ -35,13 +35,13 @@ definitions to call the service.
 To build this package, run from the repository root:
 
 ```shell
-npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies
+npm run -- lerna run build --stream --scope @bxpb/protoc-plugin --include-dependencies
 ```
 
 Output files are in the `dist/` directory, while the binary can be invoked with:
 
 ```shell
-npm run -- lerna run start --stream --scope bxpb-protoc-plugin
+npm run -- lerna run start --stream --scope @bxpb/protoc-plugin
 ```
 
 ### Test
@@ -49,12 +49,12 @@ npm run -- lerna run start --stream --scope bxpb-protoc-plugin
 Build and run unit tests with this command (run from the repository root):
 
 ```shell
-npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies &&
-    npm run -- lerna run test --stream --scope bxpb-protoc-plugin
+npm run -- lerna run build --stream --scope @bxpb/protoc-plugin --include-dependencies &&
+    npm run -- lerna run test --stream --scope @bxpb/protoc-plugin
 ```
 
 You can debug tests in VSCode with the
-["bxpb-protoc-plugin - Test Debug" launch configuration](/.vscode/launch.json).
+["@bxpb/protoc-plugin - Test Debug" launch configuration](/.vscode/launch.json).
 
 Sourcemaps seem to work fine, though breakpoints are finicky; sometimes they trigger and sometimes
 not. The `debugger;` statement is the most reliable way to break in the file.
@@ -62,8 +62,8 @@ not. The `debugger;` statement is the most reliable way to break in the file.
 You can also test with any other Node inspector by using:
 
 ```shell
-npm run -- lerna run build --stream --scope bxpb-protoc-plugin --include-dependencies &&
-    npm run -- lerna run test:debug --stream --scope bxpb-protoc-plugin
+npm run -- lerna run build --stream --scope @bxpb/protoc-plugin --include-dependencies &&
+    npm run -- lerna run test:debug --stream --scope @bxpb/protoc-plugin
 ```
 
 And then connecting to Node debug port exposed in your preferred debugger. For Chrome, this is done

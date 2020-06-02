@@ -1,5 +1,5 @@
 {
-  "name": "bxpb-protoc-plugin",
+  "name": "@bxpb/protoc-plugin",
   "version": "0.0.0",
   "description": "Complier plugin for `protoc` to generate TypeScript client/service definitions for protocol buffers.",
   "keywords": [
@@ -20,11 +20,11 @@
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
   "bin": {
-    "bxpb-protoc-plugin": "bin/bxpb-protoc-plugin"
+    "bxpb-protoc-plugin": "bin/protoc-plugin"
   },
   "scripts": {
-    "start": "bin/bxpb-protoc-plugin",
-    "build": "rm -rf dist/ && tsc -p tsconfig.bin.json && chmod +x dist/bxpb-protoc-plugin.js",
+    "start": "bin/protoc-plugin",
+    "build": "rm -rf dist/ && tsc -p tsconfig.bin.json && chmod +x dist/protoc-plugin.js",
     "build:test": "rm -rf test-out/ && tsc -p tsconfig.spec.json",
     "test": "npm run -s build:test && jasmine --config=jasmine.json",
     "test:debug": "npm run -s build:test && node --inspect-brk node_modules/.bin/jasmine --config=jasmine.json",

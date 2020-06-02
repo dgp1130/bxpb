@@ -27,12 +27,12 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@bxpb/protoc-plugin": "^0.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "@rollup/plugin-typescript": "^4.1.1",
     "@types/chrome": "^0.0.112",
     "@types/google-protobuf": "^3.7.2",
-    "bxpb-protoc-plugin": "^0.0.0",
     "grpc-tools": "^1.8.1",
     "grpc_tools_node_protoc_ts": "^3.0.0",
     "rollup": "^2.10.2",
