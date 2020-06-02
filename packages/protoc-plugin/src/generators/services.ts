@@ -45,6 +45,8 @@ function generateServiceJs(filePath: path.ParsedPath, descriptor: FileDescriptor
     });
 
     return `
+/** @fileoverview Service code for implementing services defined in ${path.format(filePath)}. */
+
 import { serve } from '@bxpb/runtime/dist/service.js';
 import * as descriptors from './${filePath.name}_bxdescriptors.js';
 
@@ -69,6 +71,8 @@ function generateServiceDts(filePath: path.ParsedPath, descriptor: FileDescripto
     });
 
     return `
+/** @fileoverview Service code for implementing services defined in ${path.format(filePath)}. */
+
 import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
 import * as descriptors from './${filePath.name}_bxdescriptors';
 

@@ -25,6 +25,14 @@ describe('plugin', () => {
 
             expect(jsFile.getName()).toBe('foo_bxdescriptors.js');
             expect(jsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import protos from './foo_pb.js';
 
 /** Service descriptor for \`Foo\`. */
@@ -45,6 +53,14 @@ export const FooService = Object.freeze({
 
             expect(dtsFile.getName()).toBe('foo_bxdescriptors.d.ts');
             expect(dtsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
@@ -94,6 +110,14 @@ export const FooService: ServiceDescriptor<IFooService>;
                 generateDescriptorFiles('foo.proto', fileDescriptor));
             
             expect(jsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import protos from './foo_pb.js';
 
 /** Service descriptor for \`Foo\`. */
@@ -128,6 +152,14 @@ export const BarService = Object.freeze({
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
@@ -184,6 +216,14 @@ export const BarService: ServiceDescriptor<IBarService>;
                 generateDescriptorFiles('foo.proto', fileDescriptor));
             
             expect(jsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import protos from './foo_pb.js';
 
 /** Service descriptor for \`Foo\`. */
@@ -212,6 +252,14 @@ export const FooService = Object.freeze({
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';
@@ -273,6 +321,14 @@ export const FooService: ServiceDescriptor<IFooService>;
                 generateDescriptorFiles('foo.proto', fileDescriptor));
 
             expect(jsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import protos from './foo_pb.js';
 
 /** Service descriptor for \`Foo\`. */
@@ -292,6 +348,14 @@ export const FooService = Object.freeze({
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
+/**
+ * @fileoverview Descriptors of services defined in foo.proto.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './foo_pb';

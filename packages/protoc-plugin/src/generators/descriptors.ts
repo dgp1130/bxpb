@@ -41,6 +41,14 @@ export function* generateDescriptorFiles(file: string, fileDescriptor: FileDescr
 /** Returns the generated JavaScript source as a string. */
 function generateDescriptorJs(filePath: path.ParsedPath, descriptor: FileDescriptorProto): string {
     return `
+/**
+ * @fileoverview Descriptors of services defined in ${path.format(filePath)}.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import protos from './${filePath.name}_pb.js';
 
 ${descriptor.getServiceList().map((service) => {
@@ -77,6 +85,14 @@ export const ${serviceName}Service = Object.freeze({
 /** Returns the generated TypeScript definitions as a string. */
 function generateDescriptorDts(filePath: path.ParsedPath, descriptor: FileDescriptorProto): string {
     return `
+/**
+ * @fileoverview Descriptors of services defined in ${path.format(filePath)}.
+ * 
+ * WARNING: The content of these files are considered an implementation detail of BXPB, are not
+ * subject to semantic versioning and are not suitable for direct use. DO NOT IMPORT THIS FILE
+ * DIRECTLY as it may change at any time without warning!
+ */
+
 import { Message } from 'google-protobuf';
 import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
 import protos from './${filePath.name}_pb';
