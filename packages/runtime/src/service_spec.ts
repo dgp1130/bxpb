@@ -1,5 +1,5 @@
 import { Message } from 'google-protobuf';
-import { serve } from './service';
+import { serve, Transport, ServiceImplementation } from './service';
 import { ServiceDescriptor } from './descriptors';
 import { FakeEvent } from './testing/fake_event';
 import { ProtoRequest, ProtoResponse } from './wire_format';
@@ -495,6 +495,23 @@ describe('service', () => {
 
             expect(response.message).toBeUndefined();
             expect(response.error).toContain('Failed to serialize response message');
+        });
+
+        it('exports `Transport`', () => {
+            // Transport **must** be exported or generated code cannot import it and will revert the
+            // type to `any` rather than throwing a type error. This test simply asserts that the
+            // type is exported by throwing a compile-error if it was not.
+            let transport: Transport;
+        });
+
+        it('exports `ServiceImplementation`', () => {
+            // `ServiceImplementation` **must** be exported or generated code cannot import it and
+            // will revert the type to `any` rather than throwing a type error. This test simply
+            // asserts that the type is exported by throwing a compile-error if it was not.
+            let serviceImpl: ServiceImplementation<{
+                serviceNameFq: 'foo.bar.BazService',
+                methods: {},
+            }>;
         });
     });
 });

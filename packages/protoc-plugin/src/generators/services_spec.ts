@@ -42,7 +42,7 @@ import * as descriptors from './foo_bxdescriptors';
  * Run {@link FooService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.FooService>);
+export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IFooService>);
             `.trim());
         });
         
@@ -90,13 +90,13 @@ import * as descriptors from './foo_bxdescriptors';
  * Run {@link FooService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.FooService>);
+export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IFooService>);
 
 /**
  * Run {@link BarService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveBar(transport: Transport, serviceImpl: ServiceImplementation<descriptors.BarService>);
+export function serveBar(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IBarService>);
             `.trim());
         });
 

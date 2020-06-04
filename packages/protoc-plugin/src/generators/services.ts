@@ -81,7 +81,7 @@ ${serviceNames.map((serviceName) => `
  * Run {@link ${serviceName}Service} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serve${serviceName}(transport: Transport, serviceImpl: ServiceImplementation<descriptors.${serviceName}Service>);
+export function serve${serviceName}(transport: Transport, serviceImpl: ServiceImplementation<descriptors.I${serviceName}Service>);
 `.trim()).join('\n\n')}
     `.trim();
 }
