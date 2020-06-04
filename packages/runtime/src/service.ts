@@ -6,7 +6,7 @@ import { decode, encode } from './encoders';
 type Transport = typeof chrome.runtime.onMessage;
 
 /** The implementation required to support the provided service. */
-type ServiceImplementation<T extends ServiceDescriptor<any>> = {
+export type ServiceImplementation<T extends ServiceDescriptor<any>> = {
     readonly [K in keyof T['methods']]: MethodImplementation<T['methods'][K]>;
 };
 
