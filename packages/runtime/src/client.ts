@@ -5,12 +5,7 @@ import { encode, decode } from './encoders';
 
 type ProtoTransport = typeof chrome.runtime.sendMessage;
 
-/**
- * PRIVATE API: Do not depend on this directly! Only generated code should extend this class.
- * Protected APIs here do not follow semantic versioning. Do **not** use or I WILL BREAK YOU!
- * 
- * Base class for a client which communicates with a service.
- */
+/** Base class for a client which communicates with a service. */
 export abstract class ProtoClient {
     /**
      * @param sendMessage The transport to use to communicate with the related service.
@@ -19,8 +14,8 @@ export abstract class ProtoClient {
 }
 
 /**
- * PRIVATE API: Do not depend on this directly! Only generated code should call this method.
- * This function does not follow semantic versioning. Do **not** use or I WILL BREAK YOU!
+ * Makes a remote-procedure call over the provided transport mechanism to the given service and
+ * method. Returns a promise which resolves the response from the method.
  * 
  * @param service The service to call a method on.
  * @param method The method to call.

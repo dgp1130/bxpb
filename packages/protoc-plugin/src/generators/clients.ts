@@ -38,7 +38,7 @@ function generateClientJs(filePath: path.ParsedPath, fileDescriptor: FileDescrip
     return `
 /** @fileoverview Client code for calling services defined in ${path.format(filePath)}. */
 
-import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './${filePath.name}_bxdescriptors.js';
 
 ${fileDescriptor.getServiceList().map((service) => {
@@ -47,7 +47,7 @@ ${fileDescriptor.getServiceList().map((service) => {
 
     return `
 /** Client for calling {@link descriptors.${serviceName}Service}. */
-export class ${serviceName}Client extends ProtoClient {
+export class ${serviceName}Client extends internal.ProtoClient {
     ${service.getMethodList().map((method) => {
         const methodName = method.getName();
         if (!methodName) throw new Error(`Method in service \`${serviceName}\` has no name!`);
@@ -55,7 +55,7 @@ export class ${serviceName}Client extends ProtoClient {
         return `
     /** Invokes the {@link descriptors.${serviceName}Service.methods.${methodName}} method. */
     async ${methodName}(req) {
-        return await rpc(this.sendMessage, descriptors.${serviceName}Service, descriptors.${serviceName}Service.methods.${methodName}, req);
+        return await internal.rpc(this.sendMessage, descriptors.${serviceName}Service, descriptors.${serviceName}Service.methods.${methodName}, req);
     }
         `.trim();
     }).join('\n\n    ' /* one indent */)}
@@ -70,7 +70,7 @@ function generateClientDts(filePath: path.ParsedPath, fileDescriptor: FileDescri
     return `
 /** @fileoverview Client code for calling services defined in ${path.format(filePath)}. */
 
-import { ProtoClient } from '@bxpb/runtime/dist/client';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './${filePath.name}_pb';
 import * as descriptors from './${filePath.name}_bxdescriptors';
 
@@ -80,7 +80,7 @@ ${fileDescriptor.getServiceList().map((service) => {
 
     return `
 /** Client for calling {@link descriptors.${serviceName}Service}. */
-export class ${serviceName}Client extends ProtoClient {
+export class ${serviceName}Client extends internal.ProtoClient {
     ${service.getMethodList().map((method) => {
         const methodName = method.getName();
         if (!methodName) throw new Error(`Method in service \`${serviceName}\` has no name!`);

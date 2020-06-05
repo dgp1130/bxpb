@@ -47,7 +47,7 @@ function generateServiceJs(filePath: path.ParsedPath, descriptor: FileDescriptor
     return `
 /** @fileoverview Service code for implementing services defined in ${path.format(filePath)}. */
 
-import { serve } from '@bxpb/runtime/dist/service.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './${filePath.name}_bxdescriptors.js';
 
 ${serviceNames.map((serviceName) => `
@@ -56,7 +56,7 @@ ${serviceNames.map((serviceName) => `
  * implementation for each RPC method.
  */
 export function serve${serviceName}(transport, serviceImpl) {
-    serve(transport, descriptors.${serviceName}Service, serviceImpl);
+    internal.serve(transport, descriptors.${serviceName}Service, serviceImpl);
 }
 `.trim()).join('\n\n')}
     `.trim();
@@ -73,7 +73,7 @@ function generateServiceDts(filePath: path.ParsedPath, descriptor: FileDescripto
     return `
 /** @fileoverview Service code for implementing services defined in ${path.format(filePath)}. */
 
-import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './${filePath.name}_bxdescriptors';
 
 ${serviceNames.map((serviceName) => `
@@ -81,7 +81,7 @@ ${serviceNames.map((serviceName) => `
  * Run {@link ${serviceName}Service} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serve${serviceName}(transport: Transport, serviceImpl: ServiceImplementation<descriptors.I${serviceName}Service>);
+export function serve${serviceName}(transport: internal.Transport, serviceImpl: internal.ServiceImplementation<descriptors.I${serviceName}Service>);
 `.trim()).join('\n\n')}
     `.trim();
 }

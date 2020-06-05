@@ -62,20 +62,20 @@ export const FooService = Object.freeze({
  */
 
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
-        readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
+        readonly Bar: internal.MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
     };
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: ServiceDescriptor<IFooService>;
+export const FooService: internal.ServiceDescriptor<IFooService>;
             `.trim());
         });
 
@@ -161,32 +161,32 @@ export const BarService = Object.freeze({
  */
 
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.FooMethod\`'s method descriptor. */
-        readonly FooMethod: MethodDescriptor<'FooMethod', protos.FooMethodRequest, protos.FooMethodResponse>;
+        readonly FooMethod: internal.MethodDescriptor<'FooMethod', protos.FooMethodRequest, protos.FooMethodResponse>;
     };
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: ServiceDescriptor<IFooService>;
+export const FooService: internal.ServiceDescriptor<IFooService>;
 
 /** Interface of \`Bar\`'s service descriptor. */
-export interface IBarService extends ServiceDescriptor<any> {
+export interface IBarService extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Bar';
     readonly methods: {
         /** Interface of \`Bar.BarMethod\`'s method descriptor. */
-        readonly BarMethod: MethodDescriptor<'BarMethod', protos.BarMethodRequest, protos.BarMethodResponse>;
+        readonly BarMethod: internal.MethodDescriptor<'BarMethod', protos.BarMethodRequest, protos.BarMethodResponse>;
     };
 }
 
 /** Service descriptor for \`Bar\`. */
-export const BarService: ServiceDescriptor<IBarService>;
+export const BarService: internal.ServiceDescriptor<IBarService>;
             `.trim());
         });
 
@@ -261,23 +261,23 @@ export const FooService = Object.freeze({
  */
 
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
-        readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
+        readonly Bar: internal.MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
 
         /** Interface of \`Foo.Baz\`'s method descriptor. */
-        readonly Baz: MethodDescriptor<'Baz', protos.BazRequest, protos.BazResponse>;
+        readonly Baz: internal.MethodDescriptor<'Baz', protos.BazRequest, protos.BazResponse>;
     };
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: ServiceDescriptor<IFooService>;
+export const FooService: internal.ServiceDescriptor<IFooService>;
             `.trim());
         });
 
@@ -357,20 +357,20 @@ export const FooService = Object.freeze({
  */
 
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: 'Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
-        readonly Bar: MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
+        readonly Bar: internal.MethodDescriptor<'Bar', protos.BarRequest, protos.BarResponse>;
     };
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: ServiceDescriptor<IFooService>;
+export const FooService: internal.ServiceDescriptor<IFooService>;
             `.trim());
         });
 

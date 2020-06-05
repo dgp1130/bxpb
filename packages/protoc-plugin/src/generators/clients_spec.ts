@@ -26,14 +26,14 @@ describe('clients', ()=> {
             expect(jsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.Bar} method. */
     async Bar(req) {
-        return await rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Bar, req);
+        return await internal.rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Bar, req);
     }
 }
             `.trim());
@@ -42,12 +42,12 @@ export class FooClient extends ProtoClient {
             expect(dtsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient } from '@bxpb/runtime/dist/client';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.Bar} method. */
     Bar(req: protos.BarRequest): Promise<protos.BarResponse>;
 }
@@ -86,22 +86,22 @@ export class FooClient extends ProtoClient {
             expect(jsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.FooMethod} method. */
     async FooMethod(req) {
-        return await rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.FooMethod, req);
+        return await internal.rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.FooMethod, req);
     }
 }
 
 /** Client for calling {@link descriptors.BarService}. */
-export class BarClient extends ProtoClient {
+export class BarClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.BarService.methods.BarMethod} method. */
     async BarMethod(req) {
-        return await rpc(this.sendMessage, descriptors.BarService, descriptors.BarService.methods.BarMethod, req);
+        return await internal.rpc(this.sendMessage, descriptors.BarService, descriptors.BarService.methods.BarMethod, req);
     }
 }
             `.trim());
@@ -109,18 +109,18 @@ export class BarClient extends ProtoClient {
             expect(dtsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient } from '@bxpb/runtime/dist/client';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.FooMethod} method. */
     FooMethod(req: protos.FooMethodRequest): Promise<protos.FooMethodResponse>;
 }
 
 /** Client for calling {@link descriptors.BarService}. */
-export class BarClient extends ProtoClient {
+export class BarClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.BarService.methods.BarMethod} method. */
     BarMethod(req: protos.BarMethodRequest): Promise<protos.BarMethodResponse>;
 }
@@ -154,19 +154,19 @@ export class BarClient extends ProtoClient {
             expect(jsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient, rpc } from '@bxpb/runtime/dist/client.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.Bar} method. */
     async Bar(req) {
-        return await rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Bar, req);
+        return await internal.rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Bar, req);
     }
 
     /** Invokes the {@link descriptors.FooService.methods.Baz} method. */
     async Baz(req) {
-        return await rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Baz, req);
+        return await internal.rpc(this.sendMessage, descriptors.FooService, descriptors.FooService.methods.Baz, req);
     }
 }
             `.trim());
@@ -174,12 +174,12 @@ export class FooClient extends ProtoClient {
             expect(dtsFile.getContent()).toBe(`
 /** @fileoverview Client code for calling services defined in foo.proto. */
 
-import { ProtoClient } from '@bxpb/runtime/dist/client';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 import * as descriptors from './foo_bxdescriptors';
 
 /** Client for calling {@link descriptors.FooService}. */
-export class FooClient extends ProtoClient {
+export class FooClient extends internal.ProtoClient {
     /** Invokes the {@link descriptors.FooService.methods.Bar} method. */
     Bar(req: protos.BarRequest): Promise<protos.BarResponse>;
 

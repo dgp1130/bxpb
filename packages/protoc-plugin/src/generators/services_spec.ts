@@ -19,7 +19,7 @@ describe('services', () => {
             expect(jsFile.getContent()).toBe(`
 /** @fileoverview Service code for implementing services defined in foo.proto. */
 
-import { serve } from '@bxpb/runtime/dist/service.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /**
@@ -27,7 +27,7 @@ import * as descriptors from './foo_bxdescriptors.js';
  * implementation for each RPC method.
  */
 export function serveFoo(transport, serviceImpl) {
-    serve(transport, descriptors.FooService, serviceImpl);
+    internal.serve(transport, descriptors.FooService, serviceImpl);
 }
             `.trim());
 
@@ -35,14 +35,14 @@ export function serveFoo(transport, serviceImpl) {
             expect(dtsFile.getContent()).toBe(`
 /** @fileoverview Service code for implementing services defined in foo.proto. */
 
-import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors';
 
 /**
  * Run {@link FooService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IFooService>);
+export function serveFoo(transport: internal.Transport, serviceImpl: internal.ServiceImplementation<descriptors.IFooService>);
             `.trim());
         });
         
@@ -60,7 +60,7 @@ export function serveFoo(transport: Transport, serviceImpl: ServiceImplementatio
             expect(jsFile.getContent()).toBe(`
 /** @fileoverview Service code for implementing services defined in foo.proto. */
 
-import { serve } from '@bxpb/runtime/dist/service.js';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors.js';
 
 /**
@@ -68,7 +68,7 @@ import * as descriptors from './foo_bxdescriptors.js';
  * implementation for each RPC method.
  */
 export function serveFoo(transport, serviceImpl) {
-    serve(transport, descriptors.FooService, serviceImpl);
+    internal.serve(transport, descriptors.FooService, serviceImpl);
 }
 
 /**
@@ -76,27 +76,27 @@ export function serveFoo(transport, serviceImpl) {
  * implementation for each RPC method.
  */
 export function serveBar(transport, serviceImpl) {
-    serve(transport, descriptors.BarService, serviceImpl);
+    internal.serve(transport, descriptors.BarService, serviceImpl);
 }
             `.trim());
 
             expect(dtsFile.getContent()).toBe(`
 /** @fileoverview Service code for implementing services defined in foo.proto. */
 
-import { Transport, ServiceImplementation } from '@bxpb/runtime/dist/service';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import * as descriptors from './foo_bxdescriptors';
 
 /**
  * Run {@link FooService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveFoo(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IFooService>);
+export function serveFoo(transport: internal.Transport, serviceImpl: internal.ServiceImplementation<descriptors.IFooService>);
 
 /**
  * Run {@link BarService} on the given transport endpoint, using the provided
  * implementation for each RPC method.
  */
-export function serveBar(transport: Transport, serviceImpl: ServiceImplementation<descriptors.IBarService>);
+export function serveBar(transport: internal.Transport, serviceImpl: internal.ServiceImplementation<descriptors.IBarService>);
             `.trim());
         });
 

@@ -94,7 +94,7 @@ function generateDescriptorDts(filePath: path.ParsedPath, descriptor: FileDescri
  */
 
 import { Message } from 'google-protobuf';
-import { MethodDescriptor, ServiceDescriptor } from '@bxpb/runtime/dist/descriptors';
+import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './${filePath.name}_pb';
 
 ${descriptor.getServiceList().map((service) => {
@@ -103,7 +103,7 @@ ${descriptor.getServiceList().map((service) => {
 
     return `
 /** Interface of \`${serviceName}\`'s service descriptor. */
-export interface I${serviceName}Service extends ServiceDescriptor<any> {
+export interface I${serviceName}Service extends internal.ServiceDescriptor<any> {
     readonly serviceNameFq: '${getFullyQualifiedServiceName(descriptor.getPackage(), serviceName)}';
     readonly methods: {
         ${service.getMethodList().map((method) => {
@@ -112,14 +112,14 @@ export interface I${serviceName}Service extends ServiceDescriptor<any> {
 
             return `
         /** Interface of \`${serviceName}.${methodName}\`'s method descriptor. */
-        readonly ${methodName}: MethodDescriptor<'${methodName}', protos.${getRelativeRequestType(method)}, protos.${getRelativeResponseType(method)}>;
+        readonly ${methodName}: internal.MethodDescriptor<'${methodName}', protos.${getRelativeRequestType(method)}, protos.${getRelativeResponseType(method)}>;
             `.trim();
         }).join('\n\n        ' /* two indents */)}
     };
 }
 
 /** Service descriptor for \`${serviceName}\`. */
-export const ${serviceName}Service: ServiceDescriptor<I${serviceName}Service>;
+export const ${serviceName}Service: internal.ServiceDescriptor<I${serviceName}Service>;
 `.trim();
 }).join('\n\n')}
     `.trim();
