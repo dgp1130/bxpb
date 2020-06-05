@@ -6,7 +6,7 @@ import { decode, encode } from './encoders';
 export type Transport = typeof chrome.runtime.onMessage;
 
 /** The implementation required to support the provided service. */
-export type ServiceImplementation<T extends ServiceDescriptor<any>> = {
+export type ServiceImplementation<T extends ServiceDescriptor> = {
     readonly [K in keyof T['methods']]: MethodImplementation<T['methods'][K]>;
 };
 
@@ -24,9 +24,9 @@ type MethodImplementation<Descriptor extends MethodDescriptor<string, Message, M
  * @param impl The implementations of all methods on the service. An implementation for <b>every</b>
  *     method is required.
  */
-export function serve<T extends ServiceDescriptor<any>>(
+export function serve<T extends ServiceDescriptor>(
     transport: Transport,
-    service: ServiceDescriptor<T>,
+    service: T,
     impl: ServiceImplementation<T>,
 ) {
     // Validate that the input implementation is valid for JavaScript users.
@@ -49,8 +49,8 @@ export function serve<T extends ServiceDescriptor<any>>(
  * 
  * @param request Should be of type {@link ProtoRequest}, but will be validated at runtime.
  */
-async function handleRequest<T extends ServiceDescriptor<any>>(
-    service: ServiceDescriptor<T>,
+async function handleRequest<T extends ServiceDescriptor>(
+    service: T,
     impl: ServiceImplementation<T>,
     request: unknown,
 ): Promise<ProtoResponse> {
@@ -69,8 +69,8 @@ async function handleRequest<T extends ServiceDescriptor<any>>(
  * 
  * @param req Should be of type {@link ProtoRequest}, but will be validated at runtime.
  */
-async function handleRequestDangerously<T extends ServiceDescriptor<any>>(
-    service: ServiceDescriptor<T>,
+async function handleRequestDangerously<T extends ServiceDescriptor>(
+    service: T,
     impl: ServiceImplementation<T>,
     req: unknown,
 ): Promise<ProtoResponse> {

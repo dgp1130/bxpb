@@ -24,7 +24,7 @@ export abstract class ProtoClient {
  */
 export async function rpc<Req extends Message, Res extends Message>(
     sendMessage: ProtoTransport,
-    service: ServiceDescriptor<any>,
+    service: ServiceDescriptor,
     method: MethodDescriptor<string, Req, Res>,
     req: Req,
 ): Promise<Res> {

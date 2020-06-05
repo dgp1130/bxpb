@@ -103,7 +103,7 @@ ${descriptor.getServiceList().map((service) => {
 
     return `
 /** Interface of \`${serviceName}\`'s service descriptor. */
-export interface I${serviceName}Service extends internal.ServiceDescriptor<any> {
+export interface I${serviceName}Service extends internal.ServiceDescriptor {
     readonly serviceNameFq: '${getFullyQualifiedServiceName(descriptor.getPackage(), serviceName)}';
     readonly methods: {
         ${service.getMethodList().map((method) => {
@@ -119,7 +119,7 @@ export interface I${serviceName}Service extends internal.ServiceDescriptor<any> 
 }
 
 /** Service descriptor for \`${serviceName}\`. */
-export const ${serviceName}Service: internal.ServiceDescriptor<I${serviceName}Service>;
+export const ${serviceName}Service: I${serviceName}Service;
 `.trim();
 }).join('\n\n')}
     `.trim();

@@ -1,14 +1,12 @@
 import { Message } from 'google-protobuf';
 
 /** Descriptor of metadata related to a proto service. */
-export interface ServiceDescriptor<Implementation extends ServiceDescriptor<any>> {
+export interface ServiceDescriptor {
     /** Fully-qualified service name. */
     readonly serviceNameFq: string;
 
     /** Map of unqualified method name to its descriptor. */
-    readonly methods: {
-        readonly [K in keyof Implementation['methods']]: MethodDescriptor<string, Message, Message>;
-    };
+    readonly methods: Record<string, MethodDescriptor<string, Message, Message>>;
 }
 
 /** Descriptor of metadata related to a proto service method. */

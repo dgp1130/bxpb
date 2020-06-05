@@ -66,7 +66,7 @@ import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends internal.ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
@@ -75,7 +75,7 @@ export interface IFooService extends internal.ServiceDescriptor<any> {
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: internal.ServiceDescriptor<IFooService>;
+export const FooService: IFooService;
             `.trim());
         });
 
@@ -165,7 +165,7 @@ import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends internal.ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.FooMethod\`'s method descriptor. */
@@ -174,10 +174,10 @@ export interface IFooService extends internal.ServiceDescriptor<any> {
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: internal.ServiceDescriptor<IFooService>;
+export const FooService: IFooService;
 
 /** Interface of \`Bar\`'s service descriptor. */
-export interface IBarService extends internal.ServiceDescriptor<any> {
+export interface IBarService extends internal.ServiceDescriptor {
     readonly serviceNameFq: 'hello.world.Bar';
     readonly methods: {
         /** Interface of \`Bar.BarMethod\`'s method descriptor. */
@@ -186,7 +186,7 @@ export interface IBarService extends internal.ServiceDescriptor<any> {
 }
 
 /** Service descriptor for \`Bar\`. */
-export const BarService: internal.ServiceDescriptor<IBarService>;
+export const BarService: IBarService;
             `.trim());
         });
 
@@ -265,7 +265,7 @@ import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends internal.ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor {
     readonly serviceNameFq: 'hello.world.Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
@@ -277,7 +277,7 @@ export interface IFooService extends internal.ServiceDescriptor<any> {
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: internal.ServiceDescriptor<IFooService>;
+export const FooService: IFooService;
             `.trim());
         });
 
@@ -361,7 +361,7 @@ import { internalOnlyDoNotDependOrElse as internal } from '@bxpb/runtime';
 import protos from './foo_pb';
 
 /** Interface of \`Foo\`'s service descriptor. */
-export interface IFooService extends internal.ServiceDescriptor<any> {
+export interface IFooService extends internal.ServiceDescriptor {
     readonly serviceNameFq: 'Foo';
     readonly methods: {
         /** Interface of \`Foo.Bar\`'s method descriptor. */
@@ -370,7 +370,7 @@ export interface IFooService extends internal.ServiceDescriptor<any> {
 }
 
 /** Service descriptor for \`Foo\`. */
-export const FooService: internal.ServiceDescriptor<IFooService>;
+export const FooService: IFooService;
             `.trim());
         });
 

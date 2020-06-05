@@ -10,7 +10,7 @@ import { encode, decode } from './encoders';
  * Example proto service type. Must be explicitly declared for type inference of the method
  * implementation map to work.
  */
-interface IGreeterService extends ServiceDescriptor<any> {
+interface IGreeterService extends ServiceDescriptor {
     readonly serviceNameFq: 'foo.bar.Greeter';
     readonly methods: {
         readonly Greet: {
@@ -24,7 +24,7 @@ interface IGreeterService extends ServiceDescriptor<any> {
 }
 
 /** Example proto service. */
-const greeterService: Readonly<ServiceDescriptor<IGreeterService>> = Object.freeze({
+const greeterService: Readonly<IGreeterService> = Object.freeze({
     serviceNameFq: 'foo.bar.Greeter',
     methods: {
         Greet: {

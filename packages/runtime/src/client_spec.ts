@@ -5,7 +5,7 @@ import { GreetRequest, GreetResponse, UnrelatedMessage } from 'generated/test_da
 import { encode } from './encoders';
 
 /** Example proto service for testing. */
-const greeterService: Readonly<ServiceDescriptor<any>> = Object.freeze({
+const greeterService: Readonly<ServiceDescriptor> = Object.freeze({
     serviceNameFq: 'foo.bar.Greeter',
     methods: {
         Greet: {

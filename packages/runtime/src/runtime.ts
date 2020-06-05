@@ -17,9 +17,9 @@ export const internalOnlyDoNotDependOrElse = {
 };
 export namespace internalOnlyDoNotDependOrElse {
     export type Transport = TransportImport;
-    export type ServiceImplementation<T extends ServiceDescriptorImport<any>> =
+    export type ServiceImplementation<T extends ServiceDescriptorImport> =
             ServiceImplementationImport<T>;
     export type MethodDescriptor<Name extends string, Req extends Message, Res extends Message> =
             MethodDescriptorImport<Name, Req, Res>;
-    export type ServiceDescriptor<T extends ServiceDescriptor<any>> = ServiceDescriptorImport<T>;
+    export type ServiceDescriptor = ServiceDescriptorImport;
 }
