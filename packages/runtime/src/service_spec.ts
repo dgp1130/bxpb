@@ -502,16 +502,15 @@ describe('service', () => {
             // type to `any` rather than throwing a type error. This test simply asserts that the
             // type is exported by throwing a compile-error if it was not.
             let transport: Transport;
+            expect().nothing();
         });
 
         it('exports `ServiceImplementation`', () => {
             // `ServiceImplementation` **must** be exported or generated code cannot import it and
             // will revert the type to `any` rather than throwing a type error. This test simply
             // asserts that the type is exported by throwing a compile-error if it was not.
-            let serviceImpl: ServiceImplementation<{
-                serviceNameFq: 'foo.bar.BazService',
-                methods: {},
-            }>;
+            let serviceImpl: ServiceImplementation<any>;
+            expect().nothing();
         });
     });
 });
