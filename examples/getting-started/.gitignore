@@ -1,0 +1,3 @@
+# Ignore generated directories from version control.
+build/
+node_modules/
