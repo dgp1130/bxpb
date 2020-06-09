@@ -4,17 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup --config && cp manifest.json popup.html build/"
+    "build": "npm run -s build-proto && npm run -s build-extension",
+    "build-proto": "rm -rf proto/ && mkdir -p proto/ && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:proto/ --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --ts_out=proto/ --plugin=protoc-gen-bxpb=node_modules/.bin/bxpb-protoc-plugin --bxpb_out=proto/ greeter.proto",
+    "build-extension": "rollup --config && cp manifest.json popup.html build/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@bxpb/protoc-plugin": "^1.0.0",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.0.1",
     "@rollup/plugin-typescript": "^4.1.2",
     "@types/chrome": "^0.0.114",
+    "grpc-tools": "^1.9.0",
+    "grpc_tools_node_protoc_ts": "^4.0.0",
     "rollup": "^2.14.0",
     "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@bxpb/runtime": "^1.0.0"
   }
 }

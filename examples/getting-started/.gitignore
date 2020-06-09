@@ -1,3 +1,4 @@
 # Ignore generated directories from version control.
 build/
+proto/
 node_modules/
