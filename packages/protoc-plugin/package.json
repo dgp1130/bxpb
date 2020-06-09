@@ -20,10 +20,9 @@
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
   "bin": {
-    "bxpb-protoc-plugin": "bin/protoc-plugin"
+    "bxpb-protoc-plugin": "dist/protoc-plugin.js"
   },
   "files": [
-    "bin/",
     "dist/"
   ],
   "scripts": {
