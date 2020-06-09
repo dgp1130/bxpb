@@ -2,6 +2,7 @@
     "extends": "./tsconfig.json",
     "exclude": [
         // Exclude test files.
-        "**/*_spec.ts"
+        "**/*_spec.ts",
+        "src/testing/"
     ]
 }
