@@ -97,3 +97,9 @@ The architecture will consist of a few packages:
     the client and service in a generic fashion.
     *   This will include client and service stubs, rather than splitting them across multiple
         packages. This is to keep the number of packages down as much as possible.
+
+## Internal Docs
+
+Some additional docs only useful for development purposes:
+
+* [Release](doc/release.md) - How to release a new version of BXPB.
