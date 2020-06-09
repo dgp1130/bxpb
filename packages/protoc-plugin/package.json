@@ -1,6 +1,6 @@
 {
   "name": "@bxpb/protoc-plugin",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Complier plugin for `protoc` to generate TypeScript client/service definitions for protocol buffers.",
   "keywords": [
     "browser-extension",
