@@ -28,7 +28,8 @@
     "build:test-data": "rm -rf generated/ && mkdir -p generated/test_data/ && grpc_tools_node_protoc --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:generated/test_data/ --ts_out=generated/test_data/ --proto_path src/test_data/ src/test_data/*.proto",
     "test": "rm -rf test-out/ && npm run -s build:test-data && karma start --browsers ChromeHeadless --singleRun",
     "test:debug": "npm run -s build:test-data && karma start",
-    "clean": "rm -rf dist/ generated/ test-out/ coverage/"
+    "clean": "rm -rf dist/ generated/ test-out/ coverage/",
+    "prepack": "npm run -s clean && npm run -s build"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"
