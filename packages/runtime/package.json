@@ -20,6 +20,9 @@
     "url": "git+https://github.com/dgp1130/bxpb.git"
   },
   "main": "dist/runtime.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "rm -rf dist/ && tsc -p tsconfig.lib.json",
     "build:test-data": "rm -rf generated/ && mkdir -p generated/test_data/ && grpc_tools_node_protoc --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --js_out=import_style=commonjs,binary:generated/test_data/ --ts_out=generated/test_data/ --proto_path src/test_data/ src/test_data/*.proto",

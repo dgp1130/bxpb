@@ -22,6 +22,10 @@
   "bin": {
     "bxpb-protoc-plugin": "bin/protoc-plugin"
   },
+  "files": [
+    "bin/",
+    "dist/"
+  ],
   "scripts": {
     "start": "bin/protoc-plugin",
     "build": "rm -rf dist/ && tsc -p tsconfig.bin.json && chmod +x dist/protoc-plugin.js",
