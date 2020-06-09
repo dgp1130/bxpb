@@ -12,7 +12,8 @@
     "build:manifest": "cp src/manifest.json dist/",
     "build:popup": "cp src/popup.html dist/",
     "build:js": "rollup --config",
-    "clean": "rm -rf dist/ proto/"
+    "clean": "rm -rf dist/ proto/",
+    "prepack": "npm run -s build && npm run -s test"
   },
   "repository": {
     "type": "git",

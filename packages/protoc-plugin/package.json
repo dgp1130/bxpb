@@ -33,7 +33,7 @@
     "test": "npm run -s build:test && jasmine --config=jasmine.json",
     "test:debug": "npm run -s build:test && node --inspect-brk node_modules/.bin/jasmine --config=jasmine.json",
     "clean": "rm -rf dist/ test-out/",
-    "prepack": "npm run -s clean && npm run -s build"
+    "prepack": "npm run -s build && npm run -s test"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"

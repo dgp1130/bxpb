@@ -29,7 +29,7 @@
     "test": "rm -rf test-out/ && npm run -s build:test-data && karma start --browsers ChromeHeadless --singleRun",
     "test:debug": "npm run -s build:test-data && karma start",
     "clean": "rm -rf dist/ generated/ test-out/ coverage/",
-    "prepack": "npm run -s clean && npm run -s build"
+    "prepack": "npm run -s build && npm run -s test"
   },
   "bugs": {
     "url": "https://github.com/dgp1130/bxpb/issues"

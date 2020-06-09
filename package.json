@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "prepack": "npm ci && npm run -- lerna bootstrap --ci && npm run -- lerna run clean"
   },
   "devDependencies": {
     "lerna": "^3.20.2"
