@@ -1,6 +1,6 @@
 {
   "name": "greeter",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.1",
   "private": true,
   "description": "Hello world example using bxpb.",
   "author": "Doug Parker <dgp1130@users.noreply.github.com>",
@@ -23,12 +23,12 @@
     "url": "https://github.com/dgp1130/bxpb/issues"
   },
   "dependencies": {
-    "@bxpb/runtime": "^1.0.0-alpha.1",
+    "@bxpb/runtime": "^1.0.1",
     "google-protobuf": "^3.12.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@bxpb/protoc-plugin": "^1.0.0-alpha.2",
+    "@bxpb/protoc-plugin": "^1.0.1",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "@rollup/plugin-typescript": "^4.1.1",
