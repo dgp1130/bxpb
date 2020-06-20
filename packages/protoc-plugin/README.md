@@ -1,6 +1,8 @@
+<!-- This is the README documentation which GitHub will display. -->
+
 # `@bxpb/protoc-plugin`
 
-The compiler plugin for `protoc` which generates client and service TypeScript code for `bxpb`.
+The compiler plugin for `protoc` which generates client and service TypeScript code for BXPB.
 
 ## Usage
 

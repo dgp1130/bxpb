@@ -1,3 +1,5 @@
+<!-- This is the README documentation which GitHub will display. -->
+
 # `@bxpb/runtime`
 
 Implements the runtime for clients and services using BXPB.

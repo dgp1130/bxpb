@@ -1,0 +1,10 @@
+<!-- This is the README documentation which NPM will pick up. -->
+
+# `@bxpb/runtime`
+
+Implements the runtime for clients and services using
+[Browser Extension Protocol Buffers (BXPB)](https://github.com/dgp1130/bxpb/packages/runtime/).
+
+Note: All currently exported APIs from this package are considered "private" to BXPB generated code
+and are not fit to be called directly by user code. In the future, publically avilable APIs may be
+added here.

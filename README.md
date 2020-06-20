@@ -15,9 +15,9 @@ A rough prototype exists in this
 [gist](https://gist.github.com/dgp1130/c4932d048eb3293c503c1acd7cf8f763), which was able to sanity
 check the approach.
 
-## Expected API
+## API
 
-A developer would be able to define a service using the protobuf language:
+A developer can define a service using the protobuf language:
 
 ```proto
 // greeter.proto
@@ -37,24 +37,32 @@ service Greeter {
 }
 ```
 
-They would compile it with the `@bxpb/protoc-plugin`:
+They can then compile by adding the `@bxpb/protoc-plugin` to an existing `protoc` installation.
+`--js_out=` is necessary to build JavaScript (using CommonJS) and the `protoc-gen-ts` plugin is
+needed to generate TypeScript definitions. See
+[Getting Started](https://github.com/dgp1130/bxpb/wiki/Getting-Started#building-protos-with-bxpb) for more info.
 
 ```shell
-protoc --plugin=node_modules/.bin/bxpb-protoc-plugin --ts_out=protos/
+npm install @bxpb/protoc-plugin@1.0.0 grpc_tools_node_protoc_ts@4.0.0 --save-dev
+protoc --js_out=import_style=commonjs,binary:proto/ \
+    --plugin=protoc-gen-ts=node_modules/.bin/protoc-gen-ts --ts_out=proto/
+    --plugin=protoc-gen-bxpb=node_modules/.bin/bxpb-protoc-plugin --bxpb_out=proto/ \
+    greeter.proto
 ```
 
-This would generate `protos/greeter_bx.ts`, with client and service stubs. Then the service
-could implemented in a Chrome extension like so:
+This generates `proto/greeter_bxclients.ts` and `proto/greeter_bxservices.ts`, containing
+client and service stubs. Then the service can be implemented in a Chrome extension like so:
 
 ```typescript
 // service.ts
 
 import { servePort } from '@bxpb/runtime';
-import { GreeterService } from './protos/greeter_bx'; // Generated service.
-import { HelloRequest, HelloResponse } from './protos/greeter_pb';
+import { GreeterService } from './proto/greeter_bxservices'; // Generated service.
+import { HelloRequest, HelloResponse } from './proto/greeter_pb';
 
 // Listen for requests with chrome.runtime.onMessage and handle them.
 servePort(chrome.runtime.onMessage, GreeterService, {
+    // Type inference enforces service contract.
     async greet(req: HelloRequest): Promise<HelloResponse> {
         const res = new HelloResponse();
         res.setMessage(`Hello, ${req.getName()}!`);
@@ -63,15 +71,17 @@ servePort(chrome.runtime.onMessage, GreeterService, {
 });
 ```
 
-Any message passing API would be able to be used, so a client/service could be implemented between
-any two endpoints in a browser extension. A client would then call this from a different context
-using:
+Any message passing API which fits the contract of `chrome.runtime.sendMessage()` can be used on the
+client, while a corresponding API fitting the contract of `chrome.runtime.onMessage` can be used on
+the service (for example: `chrome.runtime.sendMessageExternal()` and
+`chrome.runtime.onMessageExternal`). A client/service interaction can be implemented between any two
+endpoints in a browser extension. A client calls this service from a different context using:
 
 ```typescript
 // client.ts
 
-import { GreeterClient } from './protos/greeter_bx'; // Generated service.
-import { HelloRequest } from './protos/greeter_pb';
+import { GreeterClient } from './proto/greeter_bxclients'; // Generated service.
+import { HelloRequest } from './proto/greeter_pb';
 
 (async () => {
     const client = new GreeterClient(chrome.runtime.sendMessage);
@@ -84,17 +94,14 @@ import { HelloRequest } from './protos/greeter_pb';
 })();
 ```
 
-Eventually, APIs would support request and response streaming (implemented async iterators) and
-canonical errors.
-
 ## Architecture
 
-The architecture will consist of a few packages:
+The architecture consists of a few packages:
 
-*   `bxpb-protoc-compiler`: A plugin for `protoc` which generates TypeScript client/service stubs
+*   `@bxpb/protoc-plugin`: A plugin for `protoc` which generates TypeScript client/service stubs
     for a given protobuf service.
-*   `@bxpb/runtime`: A runtime to be included that performs the real work of communicating between
-    the client and service in a generic fashion.
+*   `@bxpb/runtime`: A runtime included that performs the real work of communicating between the
+    client and service in a generic fashion.
     *   This will include client and service stubs, rather than splitting them across multiple
         packages. This is to keep the number of packages down as much as possible.
 
