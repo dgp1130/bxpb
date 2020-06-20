@@ -9,11 +9,39 @@ create a tranditional web client. This enables easy communication between the di
 
 ![Node.js CI](https://github.com/dgp1130/bxpb/workflows/Node.js%20CI/badge.svg?branch=master)
 
-## Prototype
+## Status
 
-A rough prototype exists in this
-[gist](https://gist.github.com/dgp1130/c4932d048eb3293c503c1acd7cf8f763), which was able to sanity
-check the approach.
+**This project is currently shut down, unmaintained, and not suitable for production use!** After
+some investigation and internal debate, I've decided that BXPB is simply not the ideal means of
+communicating across contexts in a browser extension for a few reasons.
+
+1. To fully realize the desired end state of trivially communicating across contexts in a browser
+extension, an application's entire data model needs to be expressed in protocol buffers. This is far
+too much effort to justify the gains, unless a team was already heavily bought in to the protobuf
+ecosystem.
+1. Existing protobuf tooling, particularly in the web ecosystem, is far too difficult and
+painful to use to justify a team's investment in the area unless they were already heavily bought in
+to it. BXPB is fundamentally a developer experience tool, and no matter how seemless it is in this
+area, it will always be limited by existing, officially supported protobuf tooling.
+1. The main advantages of protobufs (small wire size, backwards and forwards compatibility,
+cross-language iteroperability, etc.) simply aren't all that helpful for a browser extension
+communicating with itself.
+
+See [#1 (comment)](https://github.com/dgp1130/bxpb/issues/1#issuecomment-639994214) for more
+background on this decision.
+
+If this is a problem you'd like to see solved, I think the best solution is to use something like
+[Comlink](https://github.com/GoogleChromeLabs/comlink), which provides much of the same DevEx
+improvements without requiring the protobuf dependencies that make BXPB so unwieldy. It also works
+well for two JS contexts to communicate with each other using existing data models already used by
+the application. I don't fully agree with all of Comlink's design decisions, but it gets a lot
+closer to the desired DevEx end state than BXPB could ever reasonably achieve. There is
+[an issue](https://github.com/GoogleChromeLabs/comlink/issues/438) for using Comlink in Chrome
+extensions, so this use case isn't fully supported as of time of writing, but I believe that is the
+best direction to solve this particular problem.
+
+See the [Getting Started](https://github.com/dgp1130/bxpb/wiki/Getting-Started) guide if you want to
+play around with BXPB.
 
 ## API
 
